@@ -34,7 +34,7 @@ async function loadJobs() {
             
             jobCard.innerHTML = `
                 <div class="flex items-start gap-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
@@ -61,22 +61,19 @@ function selectJob(job) {
     
     // Remove active state from all job cards
     document.querySelectorAll('[data-job-id]').forEach(card => {
-        card.classList.remove('selected');
+        card.classList.remove('border-blue-500', 'bg-blue-50');
+        card.classList.add('border-gray-200');
     });
     
     // Add active state to selected job card
     const selectedCard = document.querySelector(`[data-job-id="${job.id}"]`);
     if (selectedCard) {
-        selectedCard.classList.add('selected');
+        selectedCard.classList.add('border-blue-500', 'bg-blue-50');
+        selectedCard.classList.remove('border-gray-200');
     }
     
-    // Update job description with fade effect
-    const descriptionField = document.getElementById('jobDescription');
-    descriptionField.style.opacity = '0';
-    setTimeout(() => {
-        descriptionField.value = job.description;
-        descriptionField.style.opacity = '1';
-    }, 150);
+    // Update job description
+    document.getElementById('jobDescription').value = job.description;
     
     // Load candidates for this job
     loadCandidates(job.id);
@@ -153,7 +150,7 @@ function createCandidateCard(candidate, index) {
     
     card.innerHTML = `
         <div class="flex items-start gap-3 mb-4 pb-4 border-b border-gray-100">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-semibold flex-shrink-0 shadow-md">
+            <div class="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white font-semibold flex-shrink-0 shadow-md">
                 ${initials}
             </div>
             <div class="flex-1 min-w-0">
@@ -164,19 +161,19 @@ function createCandidateCard(candidate, index) {
         
         <div class="space-y-2 mb-4 text-sm text-gray-600">
             <div class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
                 <span class="truncate">${email}</span>
             </div>
             <div class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                 </svg>
                 <span class="truncate">${phone}</span>
             </div>
             <div class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
@@ -189,7 +186,7 @@ function createCandidateCard(candidate, index) {
             <p class="text-xs font-medium text-gray-500 mb-2">Skills</p>
             <div class="flex flex-wrap gap-1.5">
                 ${displaySkills.map(skill => 
-                    `<span class="px-2 py-1 bg-gradient-to-r from-purple-50 to-indigo-50 text-purple-700 text-xs rounded-md font-medium border border-purple-200">${skill}</span>`
+                    `<span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-md font-medium border border-blue-200">${skill}</span>`
                 ).join('')}
             </div>
         </div>
