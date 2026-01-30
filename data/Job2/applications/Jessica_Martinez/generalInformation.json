@@ -1,0 +1,58 @@
+{
+  "personalInfo": {
+    "firstName": "Jessica",
+    "lastName": "Martinez",
+    "email": "jessica.martinez@email.com",
+    "phone": "(416) 555-0198",
+    "location": {
+      "city": "Toronto",
+      "state": "ON",
+      "country": "Canada"
+    },
+    "dateOfBirth": "1998-07-22",
+    "linkedin": "linkedin.com/in/jessicamartinez",
+    "github": "github.com/jmartinez"
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Science",
+      "field": "Statistics",
+      "institution": "University of Toronto",
+      "startDate": "2017-09",
+      "endDate": "2021-05",
+      "gpa": 3.7,
+      "honors": ["Dean's List"]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Junior Data Analyst",
+      "company": "DataCorp Inc.",
+      "startDate": "2021-06",
+      "endDate": "Present",
+      "description": "Created interactive dashboards in Tableau for sales and marketing teams, wrote SQL queries to extract data from PostgreSQL databases"
+    },
+    {
+      "title": "Data Analytics Intern",
+      "company": "Retail Analytics Group",
+      "startDate": "2020-05",
+      "endDate": "2020-08",
+      "description": "Performed statistical analysis on customer behavior data"
+    }
+  ],
+  "skills": {
+    "programming": ["SQL", "Python", "R"],
+    "frameworks": ["Pandas", "NumPy"],
+    "tools": ["Tableau", "Power BI", "Microsoft Excel", "Google Analytics"],
+    "cloud": ["AWS S3"],
+    "databases": ["PostgreSQL", "MySQL"]
+  },
+  "certifications": [
+    "Tableau Desktop Specialist",
+    "Google Data Analytics Professional Certificate"
+  ],
+  "targetRole": "Data Analyst",
+  "applicationDate": "2026-01-20",
+  "status": "pending",
+  "yearsOfExperience": 3
+}

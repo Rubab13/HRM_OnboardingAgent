@@ -1,0 +1,57 @@
+{
+  "personalInfo": {
+    "firstName": "Kevin",
+    "lastName": "Nguyen",
+    "email": "kevin.nguyen@email.com",
+    "phone": "(604) 555-0134",
+    "location": {
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "Canada"
+    },
+    "dateOfBirth": "1999-09-18",
+    "linkedin": "linkedin.com/in/kevinnguyen-analyst",
+    "github": "github.com/knguyen"
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Science",
+      "field": "Information Systems",
+      "institution": "University of British Columbia",
+      "startDate": "2017-09",
+      "endDate": "2021-05",
+      "gpa": 3.5,
+      "honors": []
+    }
+  ],
+  "experience": [
+    {
+      "title": "Junior Data Analyst",
+      "company": "Healthcare Analytics Ltd.",
+      "startDate": "2021-07",
+      "endDate": "Present",
+      "description": "Analyzed healthcare data, created reports using SQL and Power BI"
+    },
+    {
+      "title": "Data Analytics Co-op",
+      "company": "Financial Tech Corp.",
+      "startDate": "2020-01",
+      "endDate": "2020-08",
+      "description": "Assisted in data cleaning and visualization projects"
+    }
+  ],
+  "skills": {
+    "programming": ["SQL", "Python"],
+    "frameworks": ["Pandas"],
+    "tools": ["Power BI", "Excel", "Tableau"],
+    "cloud": ["Azure"],
+    "databases": ["SQL Server", "MySQL"]
+  },
+  "certifications": [
+    "Microsoft Power BI Data Analyst Associate"
+  ],
+  "targetRole": "Data Analyst",
+  "applicationDate": "2026-01-21",
+  "status": "pending",
+  "yearsOfExperience": 3
+}

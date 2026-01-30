@@ -1,0 +1,58 @@
+{
+  "personalInfo": {
+    "firstName": "Amanda",
+    "lastName": "Foster",
+    "email": "amanda.foster@email.com",
+    "phone": "(415) 555-0221",
+    "location": {
+      "city": "San Jose",
+      "state": "CA",
+      "country": "USA"
+    },
+    "dateOfBirth": "1997-05-30",
+    "linkedin": "linkedin.com/in/amandafoster",
+    "github": "github.com/afoster"
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Science",
+      "field": "Mathematics and Statistics",
+      "institution": "University of California, Los Angeles",
+      "startDate": "2015-09",
+      "endDate": "2019-05",
+      "gpa": 3.6,
+      "honors": ["Dean's List"]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Data Analyst",
+      "company": "E-Commerce Solutions Inc.",
+      "startDate": "2019-07",
+      "endDate": "Present",
+      "description": "Analyzed customer data to drive marketing strategies, created dashboards using Tableau and Power BI"
+    },
+    {
+      "title": "Statistical Analyst Intern",
+      "company": "Market Research Group",
+      "startDate": "2018-06",
+      "endDate": "2018-08",
+      "description": "Conducted statistical analysis on survey data"
+    }
+  ],
+  "skills": {
+    "programming": ["SQL", "Python", "R", "SAS"],
+    "frameworks": ["Pandas", "NumPy", "Matplotlib"],
+    "tools": ["Tableau", "Excel", "SPSS", "SAS"],
+    "cloud": ["AWS", "Google Cloud"],
+    "databases": ["MySQL", "PostgreSQL"]
+  },
+  "certifications": [
+    "SAS Certified Specialist",
+    "Tableau Desktop Specialist"
+  ],
+  "targetRole": "Data Analyst",
+  "applicationDate": "2026-01-19",
+  "status": "pending",
+  "yearsOfExperience": 5
+}

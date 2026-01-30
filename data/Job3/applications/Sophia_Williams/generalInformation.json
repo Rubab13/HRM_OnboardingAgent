@@ -1,0 +1,59 @@
+{
+  "personalInfo": {
+    "firstName": "Sophia",
+    "lastName": "Williams",
+    "email": "sophia.williams@email.com",
+    "phone": "(604) 555-0175",
+    "location": {
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "Canada"
+    },
+    "dateOfBirth": "1996-08-25",
+    "linkedin": "linkedin.com/in/sophiawilliams-devops",
+    "github": "github.com/swilliams"
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Engineering",
+      "field": "Software Engineering",
+      "institution": "University of British Columbia",
+      "startDate": "2014-09",
+      "endDate": "2018-05",
+      "gpa": 3.7,
+      "honors": ["Dean's List"]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Senior DevOps Engineer",
+      "company": "TechStart Inc.",
+      "startDate": "2019-01",
+      "endDate": "Present",
+      "description": "Designed and implemented GitOps workflows using ArgoCD, managed GCP infrastructure with Terraform and Kubernetes"
+    },
+    {
+      "title": "DevOps Engineer",
+      "company": "Software Solutions Ltd.",
+      "startDate": "2018-06",
+      "endDate": "2018-12",
+      "description": "Built CI/CD pipelines and maintained cloud infrastructure"
+    }
+  ],
+  "skills": {
+    "programming": ["Python", "Go", "Bash", "Java"],
+    "frameworks": ["FastAPI"],
+    "tools": ["Kubernetes", "Docker", "Terraform", "GitHub Actions", "ArgoCD", "Helm", "Prometheus", "Grafana", "ELK Stack"],
+    "cloud": ["GCP", "AWS", "Azure"],
+    "databases": ["PostgreSQL", "MySQL", "MongoDB"]
+  },
+  "certifications": [
+    "Certified Kubernetes Administrator (CKA)",
+    "Certified Kubernetes Application Developer (CKAD)",
+    "Google Cloud Professional Cloud Architect"
+  ],
+  "targetRole": "Senior DevOps Engineer",
+  "applicationDate": "2026-01-14",
+  "status": "pending",
+  "yearsOfExperience": 6
+}

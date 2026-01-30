@@ -1,0 +1,67 @@
+{
+  "personalInfo": {
+    "firstName": "David",
+    "lastName": "Kim",
+    "email": "david.kim@email.com",
+    "phone": "(212) 555-0167",
+    "location": {
+      "city": "New York",
+      "state": "NY",
+      "country": "USA"
+    },
+    "dateOfBirth": "1996-11-08",
+    "linkedin": "linkedin.com/in/davidkim-data",
+    "github": "github.com/dkim"
+  },
+  "education": [
+    {
+      "degree": "Master of Science",
+      "field": "Business Analytics",
+      "institution": "New York University",
+      "startDate": "2018-09",
+      "endDate": "2020-05",
+      "gpa": 3.8,
+      "honors": ["Distinction"]
+    },
+    {
+      "degree": "Bachelor of Arts",
+      "field": "Economics",
+      "institution": "Boston University",
+      "startDate": "2014-09",
+      "endDate": "2018-05",
+      "gpa": 3.6,
+      "honors": ["Cum Laude"]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Data Analyst",
+      "company": "Financial Services Group",
+      "startDate": "2020-08",
+      "endDate": "Present",
+      "description": "Built predictive models using Python and SQL for risk assessment, developed Power BI dashboards for executive reporting"
+    },
+    {
+      "title": "Business Intelligence Analyst",
+      "company": "Tech Innovations LLC",
+      "startDate": "2019-06",
+      "endDate": "2020-07",
+      "description": "Conducted A/B testing to optimize marketing campaigns"
+    }
+  ],
+  "skills": {
+    "programming": ["SQL", "Python", "R"],
+    "frameworks": ["Pandas", "Scikit-learn"],
+    "tools": ["Power BI", "Excel", "Google Analytics", "Looker"],
+    "cloud": ["Azure", "AWS"],
+    "databases": ["SQL Server", "PostgreSQL", "MongoDB"]
+  },
+  "certifications": [
+    "Microsoft Certified: Data Analyst Associate",
+    "Google Analytics Individual Qualification"
+  ],
+  "targetRole": "Senior Data Analyst",
+  "applicationDate": "2026-01-18",
+  "status": "pending",
+  "yearsOfExperience": 4
+}

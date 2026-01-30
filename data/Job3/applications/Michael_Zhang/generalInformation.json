@@ -1,0 +1,58 @@
+{
+  "personalInfo": {
+    "firstName": "Michael",
+    "lastName": "Zhang",
+    "email": "michael.zhang@email.com",
+    "phone": "(415) 555-0189",
+    "location": {
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "USA"
+    },
+    "dateOfBirth": "1997-04-12",
+    "linkedin": "linkedin.com/in/michaelzhang-devops",
+    "github": "github.com/mzhang"
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Science",
+      "field": "Computer Science",
+      "institution": "University of California, Berkeley",
+      "startDate": "2015-09",
+      "endDate": "2019-05",
+      "gpa": 3.6,
+      "honors": ["Dean's List"]
+    }
+  ],
+  "experience": [
+    {
+      "title": "DevOps Engineer",
+      "company": "CloudTech Solutions",
+      "startDate": "2019-07",
+      "endDate": "Present",
+      "description": "Built and maintained CI/CD pipelines using Jenkins and GitLab CI, managed Kubernetes clusters for containerized microservices"
+    },
+    {
+      "title": "System Administrator Intern",
+      "company": "Tech Startup Inc.",
+      "startDate": "2018-05",
+      "endDate": "2018-08",
+      "description": "Assisted with infrastructure automation and deployment"
+    }
+  ],
+  "skills": {
+    "programming": ["Python", "Bash", "Go"],
+    "frameworks": ["Django", "Flask"],
+    "tools": ["Kubernetes", "Docker", "Terraform", "Jenkins", "GitLab CI", "Ansible", "Prometheus", "Grafana"],
+    "cloud": ["AWS", "GCP"],
+    "databases": ["PostgreSQL", "Redis", "MongoDB"]
+  },
+  "certifications": [
+    "Certified Kubernetes Administrator (CKA)",
+    "AWS Certified Solutions Architect - Associate"
+  ],
+  "targetRole": "DevOps Engineer",
+  "applicationDate": "2026-01-16",
+  "status": "pending",
+  "yearsOfExperience": 5
+}

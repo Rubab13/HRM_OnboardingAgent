@@ -1,0 +1,62 @@
+JOB TITLE: DevOps Engineer
+
+COMPANY NAME: TechFlow Solutions Inc.
+
+LOCATION: Remote (USA & Canada)  
+EMPLOYMENT TYPE: Full-time  
+DEPARTMENT: Platform Engineering  
+REPORTS TO: VP of Engineering
+
+ABOUT THE COMPANY  
+TechFlow Solutions Inc. is a fast-growing software company providing enterprise automation and workflow solutions to Fortune 500 companies across North America. Our platform enables businesses to streamline operations, reduce manual processes, and improve efficiency through intelligent automation.
+
+POSITION SUMMARY  
+TechFlow Solutions Inc. is seeking a DevOps Engineer to support the continuous integration, deployment, and infrastructure management of our cloud-native platform. This role involves building and maintaining CI/CD pipelines, automating infrastructure, and ensuring system reliability and performance.
+
+The ideal candidate has a strong background in automation, cloud technologies, and a passion for improving developer productivity and system reliability.
+
+KEY RESPONSIBILITIES  
+• Design, implement, and maintain CI/CD pipelines using Jenkins, GitLab CI, or GitHub Actions  
+• Automate infrastructure provisioning and configuration using Terraform and Ansible  
+• Manage and optimize Kubernetes clusters for containerized applications  
+• Monitor system performance, availability, and security using Prometheus, Grafana, and ELK stack  
+• Implement infrastructure as code best practices  
+• Collaborate with development teams to improve deployment processes and system architecture  
+• Troubleshoot production incidents and participate in on-call rotations  
+• Implement backup, disaster recovery, and business continuity procedures  
+• Optimize cloud costs and resource utilization on AWS or GCP  
+• Maintain documentation for infrastructure, runbooks, and operational procedures  
+
+REQUIRED QUALIFICATIONS  
+• Bachelor's degree in Computer Science, Engineering, or related technical field, or equivalent experience  
+• 3–5 years of experience in DevOps, Site Reliability Engineering, or Infrastructure roles  
+• Strong hands-on experience with AWS or Google Cloud Platform  
+• Proficiency with containerization and orchestration tools (Docker, Kubernetes)  
+• Experience building and maintaining CI/CD pipelines  
+• Strong scripting skills in Python, Bash, or Go  
+• Experience with infrastructure as code tools such as Terraform or CloudFormation  
+• Understanding of networking, security, and Linux system administration  
+• Strong problem-solving and troubleshooting skills  
+
+PREFERRED QUALIFICATIONS  
+• Kubernetes certifications (CKA or CKAD)  
+• Experience with configuration management tools like Ansible or Chef  
+• Knowledge of GitOps principles and tools like ArgoCD or Flux  
+• Experience with service mesh technologies (Istio, Linkerd)  
+• Familiarity with security scanning and compliance automation  
+• Prior experience working in agile or fast-paced startup environments  
+
+WHAT WE OFFER  
+• Competitive salary and equity options  
+• Fully remote work with flexible hours  
+• Comprehensive health, dental, and vision insurance  
+• Paid time off and parental leave  
+• Home office setup allowance  
+• Learning and development budget  
+• Cutting-edge technology stack and tools  
+
+EQUAL OPPORTUNITY EMPLOYER  
+TechFlow Solutions Inc. is an equal opportunity employer. We are committed to creating an inclusive workplace and consider all qualified applicants regardless of race, religion, gender, age, disability, or any other protected status.
+
+HOW TO APPLY  
+Interested candidates should submit their resume to jobs@techflowsolutions.com. Only shortlisted candidates will be contacted.

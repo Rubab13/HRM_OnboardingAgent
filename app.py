@@ -5,7 +5,6 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import os
 import json
-from datetime import datetime
 
 # Import AI Agents
 from src.llm_provider import GeminiProvider
@@ -38,6 +37,7 @@ initialize_agents()
 
 # Request model for shortlisting
 class ShortlistRequest(BaseModel):
+    job_id: str
     job_description: str
 
 app = FastAPI()
@@ -49,93 +49,62 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 @app.get("/")
-async def landing_page(request: Request):
-    """Serve the landing page"""
-    return templates.TemplateResponse("landing.html", {"request": request})
-
-@app.get("/hr")
 async def hr_dashboard(request: Request):
     """Serve the HR dashboard"""
     return templates.TemplateResponse("hr_dashboard.html", {"request": request})
-
-@app.get("/student")
-async def student_upload(request: Request):
-    """Serve the student upload page"""
-    return templates.TemplateResponse("student_upload.html", {"request": request})
-
-@app.post("/api/student/upload")
-async def upload_student_data(
-    request: Request,
-    resume: UploadFile = File(...),
-    data: str = Form(...)
-):
-    """Handle student data upload"""
-    try:
-        # Parse the JSON data
-        student_data = json.loads(data)
-        
-        # Create directory for student
-        student_name = f"{student_data['personalInfo']['firstName']}_{student_data['personalInfo']['lastName']}"
-        student_dir = os.path.join("data", "applications", student_name)
-        os.makedirs(student_dir, exist_ok=True)
-        
-        # Save resume
-        resume_path = os.path.join(student_dir, "resume.pdf")
-        with open(resume_path, "wb") as f:
-            content = await resume.read()
-            f.write(content)
-        
-        # Add application metadata
-        student_data["applicationDate"] = datetime.now().strftime("%Y-%m-%d")
-        student_data["status"] = "pending"
-        
-        # Save JSON data
-        json_path = os.path.join(student_dir, "generalInformation.json")
-        with open(json_path, "w") as f:
-            json.dump(student_data, f, indent=2)
-        
-        return JSONResponse(content={
-            "success": True,
-            "message": "Application submitted successfully!",
-            "student_name": student_name
-        })
-    
-    except Exception as e:
-        return JSONResponse(
-            status_code=400,
-            content={"success": False, "message": str(e)}
-        )
 
 @app.get("/api/health")
 async def health():
     """Health check endpoint"""
     return {"status": "healthy", "message": "HR System API is running"}
 
-@app.get("/api/candidates")
-async def get_candidates():
-    """Get all candidates from data/applications folder"""
+@app.get("/api/jobs")
+async def get_jobs():
+    """Get all job folders"""
+    try:
+        jobs = []
+        data_dir = "Data"
+        
+        if not os.path.exists(data_dir):
+            return JSONResponse(content={"jobs": [], "count": 0})
+        
+        for job_folder in os.listdir(data_dir):
+            job_path = os.path.join(data_dir, job_folder)
+            if os.path.isdir(job_path):
+                job_desc_path = os.path.join(job_path, "jobDescription.txt")
+                if os.path.exists(job_desc_path):
+                    with open(job_desc_path, 'r', encoding='utf-8') as f:
+                        description = f.read()
+                    jobs.append({
+                        "id": job_folder,
+                        "name": job_folder,
+                        "description": description
+                    })
+        
+        return JSONResponse(content={"jobs": jobs, "count": len(jobs)})
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": str(e)})
+
+@app.get("/api/candidates/{job_id}")
+async def get_candidates(job_id: str):
+    """Get all candidates for a specific job"""
     try:
         candidates = []
-        applications_dir = os.path.join("data", "applications")
+        applications_dir = os.path.join("Data", job_id, "applications")
         
-        # Check if directory exists
         if not os.path.exists(applications_dir):
             return JSONResponse(content={"candidates": [], "count": 0})
         
-        # Iterate through each student folder
         for student_folder in os.listdir(applications_dir):
             student_path = os.path.join(applications_dir, student_folder)
             
-            # Check if it's a directory
             if os.path.isdir(student_path):
                 json_file = os.path.join(student_path, "generalInformation.json")
                 
-                # Check if generalInformation.json exists
                 if os.path.exists(json_file):
                     try:
                         with open(json_file, 'r', encoding='utf-8') as f:
                             candidate_data = json.load(f)
-                            # Add folder name for reference
                             candidate_data['folderName'] = student_folder
                             candidates.append(candidate_data)
                     except Exception as e:
@@ -170,6 +139,7 @@ async def shortlist_candidates(request: ShortlistRequest):
                 }
             )
         
+        job_id = request.job_id
         job_description = request.job_description
         
         if not job_description or len(job_description.strip()) < 10:
@@ -178,8 +148,8 @@ async def shortlist_candidates(request: ShortlistRequest):
                 content={"success": False, "error": "Job description is too short"}
             )
         
-        # Step 1: Get all candidates
-        candidates_response = await get_candidates()
+        # Step 1: Get all candidates for this job
+        candidates_response = await get_candidates(job_id)
         candidates_data = json.loads(candidates_response.body)
         candidates = candidates_data.get('candidates', [])
         

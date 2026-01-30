@@ -1,0 +1,58 @@
+{
+  "personalInfo": {
+    "firstName": "Robert",
+    "lastName": "Taylor",
+    "email": "robert.taylor@email.com",
+    "phone": "(206) 555-0145",
+    "location": {
+      "city": "Seattle",
+      "state": "WA",
+      "country": "USA"
+    },
+    "dateOfBirth": "1995-06-09",
+    "linkedin": "linkedin.com/in/roberttaylor-devops",
+    "github": "github.com/rtaylor"
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Science",
+      "field": "Computer Engineering",
+      "institution": "University of Washington",
+      "startDate": "2013-09",
+      "endDate": "2017-05",
+      "gpa": 3.4,
+      "honors": []
+    }
+  ],
+  "experience": [
+    {
+      "title": "DevOps Engineer",
+      "company": "Enterprise Cloud Systems",
+      "startDate": "2017-07",
+      "endDate": "Present",
+      "description": "Automated infrastructure deployment with Terraform, maintained Kubernetes clusters, built CI/CD pipelines with GitHub Actions"
+    },
+    {
+      "title": "Linux Systems Administrator",
+      "company": "Web Hosting Solutions",
+      "startDate": "2016-01",
+      "endDate": "2017-06",
+      "description": "Managed Linux servers and deployment processes"
+    }
+  ],
+  "skills": {
+    "programming": ["Python", "Bash", "Ruby", "PowerShell"],
+    "frameworks": ["Rails"],
+    "tools": ["Kubernetes", "Docker", "Terraform", "GitHub Actions", "Chef", "Nagios", "Splunk"],
+    "cloud": ["AWS", "GCP"],
+    "databases": ["MySQL", "PostgreSQL", "Cassandra"]
+  },
+  "certifications": [
+    "AWS Certified Solutions Architect - Professional",
+    "Linux Foundation Certified System Administrator"
+  ],
+  "targetRole": "DevOps Engineer",
+  "applicationDate": "2026-01-15",
+  "status": "pending",
+  "yearsOfExperience": 7
+}
