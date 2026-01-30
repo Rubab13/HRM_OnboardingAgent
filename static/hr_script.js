@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function loadJobs() {
-    const jobSelect = document.getElementById('jobSelect');
+    const jobListContainer = document.getElementById('jobListContainer');
     
     try {
         const response = await fetch('/api/jobs');
@@ -18,17 +18,74 @@ async function loadJobs() {
         
         allJobs = data.jobs || [];
         
-        jobSelect.innerHTML = '<option value="">Select a job position...</option>';
-        allJobs.forEach(job => {
-            const option = document.createElement('option');
-            option.value = job.id;
-            option.textContent = job.id.replace(/_/g, ' ').replace(/job(\d+)/, 'Job Position $1');
-            jobSelect.appendChild(option);
+        if (allJobs.length === 0) {
+            jobListContainer.innerHTML = '<div class="text-center text-gray-500 py-8">No jobs available</div>';
+            return;
+        }
+        
+        jobListContainer.innerHTML = '';
+        allJobs.forEach((job, index) => {
+            const jobTitle = extractJobTitle(job.description);
+            
+            const jobCard = document.createElement('div');
+            jobCard.className = 'job-card border-2 border-gray-200 rounded-lg p-4 cursor-pointer transition-all duration-300 animate-slide-in';
+            jobCard.style.animationDelay = `${index * 0.1}s`;
+            jobCard.setAttribute('data-job-id', job.id);
+            
+            jobCard.innerHTML = `
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-semibold text-gray-900 mb-1">${jobTitle}</h4>
+                        <p class="text-xs text-gray-500 font-mono">${job.id}</p>
+                    </div>
+                </div>
+            `;
+            
+            jobCard.addEventListener('click', () => selectJob(job));
+            
+            jobListContainer.appendChild(jobCard);
         });
     } catch (error) {
         console.error('Error loading jobs:', error);
-        jobSelect.innerHTML = '<option value="">Error loading jobs</option>';
+        jobListContainer.innerHTML = '<div class="text-center text-red-500 py-8">Error loading jobs</div>';
     }
+}
+
+function selectJob(job) {
+    selectedJobId = job.id;
+    
+    // Remove active state from all job cards
+    document.querySelectorAll('[data-job-id]').forEach(card => {
+        card.classList.remove('selected');
+    });
+    
+    // Add active state to selected job card
+    const selectedCard = document.querySelector(`[data-job-id="${job.id}"]`);
+    if (selectedCard) {
+        selectedCard.classList.add('selected');
+    }
+    
+    // Update job description with fade effect
+    const descriptionField = document.getElementById('jobDescription');
+    descriptionField.style.opacity = '0';
+    setTimeout(() => {
+        descriptionField.value = job.description;
+        descriptionField.style.opacity = '1';
+    }, 150);
+    
+    // Load candidates for this job
+    loadCandidates(job.id);
+}
+
+function extractJobTitle(description) {
+    // Extract job title from "JOB TITLE: [Title]" format
+    const match = description.match(/JOB TITLE:\s*(.+)/i);
+    return match ? match[1].trim() : 'Unknown Position';
 }
 
 async function loadCandidates(jobId) {
@@ -66,7 +123,8 @@ async function loadCandidates(jobId) {
 
 function createCandidateCard(candidate, index) {
     const card = document.createElement('div');
-    card.className = 'bg-white rounded-lg shadow-sm border border-gray-200 p-5 hover:shadow-md transition-shadow';
+    card.className = 'candidate-card bg-white rounded-xl shadow-sm border-2 border-gray-200 p-5 animate-fade-in';
+    card.style.animationDelay = `${index * 0.05}s`;
     
     const personalInfo = candidate.personalInformation || candidate.personalInfo || {};
     const fullName = personalInfo.fullName || `${personalInfo.firstName || ''} ${personalInfo.lastName || ''}`.trim() || 'Unknown';
@@ -95,7 +153,7 @@ function createCandidateCard(candidate, index) {
     
     card.innerHTML = `
         <div class="flex items-start gap-3 mb-4 pb-4 border-b border-gray-100">
-            <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold flex-shrink-0">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-semibold flex-shrink-0 shadow-md">
                 ${initials}
             </div>
             <div class="flex-1 min-w-0">
@@ -106,19 +164,19 @@ function createCandidateCard(candidate, index) {
         
         <div class="space-y-2 mb-4 text-sm text-gray-600">
             <div class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
                 <span class="truncate">${email}</span>
             </div>
             <div class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                 </svg>
                 <span class="truncate">${phone}</span>
             </div>
             <div class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
@@ -131,7 +189,7 @@ function createCandidateCard(candidate, index) {
             <p class="text-xs font-medium text-gray-500 mb-2">Skills</p>
             <div class="flex flex-wrap gap-1.5">
                 ${displaySkills.map(skill => 
-                    `<span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">${skill}</span>`
+                    `<span class="px-2 py-1 bg-gradient-to-r from-purple-50 to-indigo-50 text-purple-700 text-xs rounded-md font-medium border border-purple-200">${skill}</span>`
                 ).join('')}
             </div>
         </div>
@@ -149,28 +207,7 @@ function createCandidateCard(candidate, index) {
 }
 
 function setupEventListeners() {
-    const jobSelect = document.getElementById('jobSelect');
-    const jobDescription = document.getElementById('jobDescription');
     const shortlistBtn = document.getElementById('shortlistBtn');
-    
-    jobSelect.addEventListener('change', (e) => {
-        const jobId = e.target.value;
-        selectedJobId = jobId;
-        
-        if (jobId) {
-            const selectedJob = allJobs.find(j => j.id === jobId);
-            if (selectedJob) {
-                jobDescription.value = selectedJob.description;
-                loadCandidates(jobId);
-            }
-        } else {
-            jobDescription.value = '';
-            document.getElementById('candidatesContainer').innerHTML = '<div class="col-span-full text-center py-8 text-gray-500">Select a job to view candidates</div>';
-            document.getElementById('candidateCount').textContent = '';
-            shortlistBtn.disabled = true;
-        }
-    });
-    
     shortlistBtn.addEventListener('click', handleShortlist);
 }
 
