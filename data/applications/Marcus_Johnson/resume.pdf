@@ -1,0 +1,85 @@
+RESUME
+======
+
+Marcus Johnson
+Email: marcus.johnson@email.com
+Phone: (555) 234-5678
+LinkedIn: linkedin.com/in/marcusjohnson
+Location: Seattle, WA
+
+PROFESSIONAL SUMMARY
+-------------------
+Cloud Engineer with 3 years of experience in designing, deploying, and managing scalable cloud infrastructure. Expert in AWS, Azure, and Kubernetes with proven track record of optimizing cloud costs and improving system reliability.
+
+EDUCATION
+---------
+Bachelor of Science in Computer Engineering
+Georgia Institute of Technology | 2019-2023
+GPA: 3.9/4.0
+
+TECHNICAL SKILLS
+---------------
+- Cloud Platforms: AWS, Microsoft Azure, Google Cloud Platform
+- Infrastructure as Code: Terraform, CloudFormation, Ansible
+- Containers: Docker, Kubernetes, Helm, ECS, EKS
+- CI/CD: Jenkins, GitLab CI, GitHub Actions, ArgoCD
+- Monitoring: Prometheus, Grafana, CloudWatch, Datadog
+- Scripting: Python, Bash, PowerShell
+- Networking: VPC, VPN, Load Balancers, API Gateway
+- Databases: RDS, DynamoDB, CosmosDB, Aurora
+
+CERTIFICATIONS
+-------------
+- AWS Solutions Architect - Professional
+- AWS DevOps Engineer - Professional
+- Certified Kubernetes Administrator (CKA)
+- Microsoft Azure Solutions Architect Expert
+- HashiCorp Certified: Terraform Associate
+
+EXPERIENCE
+----------
+Cloud Engineer | CloudScale Inc.
+July 2023 - Present
+- Architected and deployed multi-region AWS infrastructure serving 2M+ users
+- Reduced cloud costs by 35% through resource optimization and reserved instances
+- Implemented automated disaster recovery with RTO of 15 minutes
+- Managed Kubernetes clusters with 100+ microservices
+- Designed and implemented CI/CD pipelines reducing deployment time by 60%
+
+Junior Cloud Engineer | DataStream Technologies
+June 2022 - June 2023
+- Migrated legacy applications to AWS cloud infrastructure
+- Automated infrastructure provisioning using Terraform
+- Implemented monitoring and alerting using CloudWatch and Prometheus
+- Maintained 99.9% uptime across production environments
+- Collaborated with development teams on containerization strategies
+
+Cloud Engineering Intern | StartupHub
+Summer 2021
+- Built serverless applications using AWS Lambda and API Gateway
+- Created infrastructure automation scripts using Python and Boto3
+- Assisted in migration of MySQL databases to Amazon RDS
+- Documented cloud architecture and best practices
+
+PROJECTS
+--------
+Multi-Cloud Kubernetes Platform
+- Designed hybrid cloud solution spanning AWS and Azure
+- Implemented service mesh using Istio for microservices communication
+- Achieved 99.95% availability across all services
+
+Infrastructure Automation Framework
+- Built Terraform modules for standardized infrastructure deployment
+- Reduced provisioning time from hours to minutes
+- Open-sourced project with 200+ GitHub stars
+
+Cost Optimization Dashboard
+- Created real-time cost monitoring dashboard using Python and Grafana
+- Identified and eliminated $50K in annual waste
+- Implemented automated recommendations for cost savings
+
+AWARDS & RECOGNITION
+-------------------
+- Employee of the Quarter Q2 2024
+- AWS Cloud Warrior Award 2024
+- Academic Excellence Award, Georgia Tech

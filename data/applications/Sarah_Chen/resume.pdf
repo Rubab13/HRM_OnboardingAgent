@@ -1,0 +1,70 @@
+RESUME
+======
+
+Sarah Chen
+Email: sarah.chen@email.com
+Phone: (555) 123-4567
+LinkedIn: linkedin.com/in/sarahchen
+Location: San Francisco, CA
+
+PROFESSIONAL SUMMARY
+-------------------
+Data Science professional with 2 years of experience in machine learning, statistical analysis, and data visualization. Proficient in Python, R, and SQL with strong background in predictive modeling and deep learning frameworks.
+
+EDUCATION
+---------
+Master of Science in Data Science
+University of California, Berkeley | 2022-2024
+GPA: 3.8/4.0
+
+Bachelor of Science in Computer Science
+Stanford University | 2018-2022
+GPA: 3.7/4.0
+
+TECHNICAL SKILLS
+---------------
+- Programming: Python, R, SQL, Java
+- ML Frameworks: TensorFlow, PyTorch, Scikit-learn, Keras
+- Data Tools: Pandas, NumPy, Matplotlib, Seaborn, Tableau
+- Big Data: Apache Spark, Hadoop, Hive
+- Cloud: AWS (SageMaker, S3, EC2), Google Cloud Platform
+- Databases: PostgreSQL, MongoDB, Redis
+
+EXPERIENCE
+----------
+Data Science Intern | TechCorp Solutions
+June 2023 - August 2023
+- Built machine learning models for customer churn prediction with 87% accuracy
+- Performed exploratory data analysis on 10M+ customer records
+- Created interactive dashboards using Tableau for executive reporting
+- Implemented A/B testing framework for product recommendations
+
+Research Assistant | UC Berkeley Data Science Lab
+January 2023 - May 2024
+- Developed deep learning models for NLP tasks using transformers
+- Published research paper on sentiment analysis techniques
+- Collaborated with team of 5 researchers on climate data analysis
+- Processed and cleaned datasets with 5M+ records
+
+PROJECTS
+--------
+Stock Price Prediction System
+- Built LSTM model to predict stock prices with 82% directional accuracy
+- Implemented real-time data pipeline using Apache Kafka
+- Deployed model on AWS SageMaker for inference
+
+Customer Segmentation Analysis
+- Performed K-means clustering on customer behavior data
+- Identified 6 distinct customer segments for marketing strategy
+- Visualized results using Python and presented to stakeholders
+
+CERTIFICATIONS
+-------------
+- AWS Certified Machine Learning - Specialty
+- TensorFlow Developer Certificate
+- Data Science Professional Certificate (IBM)
+
+AWARDS
+------
+- Dean's List: All semesters
+- Best Data Science Project Award, UC Berkeley 2024

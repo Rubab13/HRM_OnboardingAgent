@@ -1,0 +1,76 @@
+{
+  "personalInfo": {
+    "firstName": "Priya",
+    "lastName": "Patel",
+    "email": "priya.patel@email.com",
+    "phone": "(555) 345-6789",
+    "location": {
+      "city": "Austin",
+      "state": "TX",
+      "country": "USA"
+    },
+    "dateOfBirth": "1999-11-08",
+    "linkedin": "linkedin.com/in/priyapatel",
+    "github": "github.com/priyapatel",
+    "website": "priyapatel.dev"
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Technology",
+      "field": "Information Technology",
+      "institution": "Indian Institute of Technology, Bombay",
+      "startDate": "2018-08",
+      "endDate": "2022-05",
+      "gpa": 3.85,
+      "honors": ["First Class with Distinction", "Best Final Year Project"]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Platform Engineer",
+      "company": "DevTools Corp",
+      "startDate": "2023-03",
+      "endDate": "present",
+      "description": "Building internal developer platform and implementing GitOps workflows"
+    },
+    {
+      "title": "Junior Platform Engineer",
+      "company": "TechStart Solutions",
+      "startDate": "2022-07",
+      "endDate": "2023-02",
+      "description": "Maintaining CI/CD pipelines and infrastructure automation"
+    },
+    {
+      "title": "Software Engineer Intern",
+      "company": "GlobalTech India",
+      "startDate": "2021-06",
+      "endDate": "2021-08",
+      "description": "Deployment automation and containerization"
+    }
+  ],
+  "skills": {
+    "platform": ["Kubernetes", "OpenShift", "Rancher", "Helm"],
+    "cicd": ["Jenkins", "GitLab CI/CD", "CircleCI", "Tekton", "Argo Workflows"],
+    "gitops": ["ArgoCD", "FluxCD", "Kustomize"],
+    "iac": ["Terraform", "Pulumi", "Crossplane"],
+    "monitoring": ["Prometheus", "Grafana", "ELK Stack", "Jaeger", "OpenTelemetry"],
+    "serviceMesh": ["Istio", "Linkerd", "Consul"],
+    "languages": ["Python", "Go", "Bash"],
+    "cloud": ["AWS", "GCP", "Azure"],
+    "security": ["Vault", "SOPS", "cert-manager", "OPA"]
+  },
+  "certifications": [
+    "Certified Kubernetes Application Developer (CKAD)",
+    "Certified Kubernetes Administrator (CKA)",
+    "AWS Certified DevOps Engineer - Professional",
+    "GitOps Certified Associate"
+  ],
+  "targetRole": "Senior Platform Engineer",
+  "applicationDate": "2026-01-20",
+  "status": "pending",
+  "yearsOfExperience": 3.5,
+  "publicSpeaking": [
+    "KubeCon 2024 - Building Developer Platforms",
+    "DevOps Days Austin 2025"
+  ]
+}

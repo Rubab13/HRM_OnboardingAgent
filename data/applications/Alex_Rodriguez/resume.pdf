@@ -1,0 +1,111 @@
+RESUME
+======
+
+Alex Rodriguez
+Email: alex.rodriguez@email.com
+Phone: (555) 456-7890
+LinkedIn: linkedin.com/in/alexrodriguez
+Location: Miami, FL
+
+PROFESSIONAL SUMMARY
+-------------------
+Full Stack Web Developer with 4 years of experience building modern, responsive web applications. Proficient in React, Node.js, and TypeScript with strong focus on user experience and performance optimization. Experienced in both frontend and backend development with expertise in microservices architecture.
+
+EDUCATION
+---------
+Bachelor of Science in Computer Science
+University of Florida | 2019-2023
+GPA: 3.75/4.0
+Minor: User Experience Design
+
+TECHNICAL SKILLS
+---------------
+Frontend:
+- Languages: JavaScript, TypeScript, HTML5, CSS3, SASS
+- Frameworks: React, Next.js, Vue.js, Angular, Svelte
+- State Management: Redux, Zustand, Context API, Recoil
+- UI Libraries: Material-UI, Tailwind CSS, Chakra UI, Ant Design
+- Testing: Jest, React Testing Library, Cypress, Playwright
+
+Backend:
+- Runtime: Node.js, Deno
+- Frameworks: Express.js, NestJS, Fastify, Koa
+- Databases: PostgreSQL, MongoDB, MySQL, Redis
+- ORMs: Prisma, TypeORM, Sequelize
+- APIs: REST, GraphQL, WebSockets, gRPC
+
+DevOps & Tools:
+- Cloud: AWS (Lambda, S3, CloudFront, EC2), Vercel, Netlify
+- Containers: Docker, Docker Compose
+- CI/CD: GitHub Actions, GitLab CI, CircleCI
+- Version Control: Git, GitHub, GitLab
+- Build Tools: Webpack, Vite, Turbopack, esbuild
+
+CERTIFICATIONS
+-------------
+- AWS Certified Developer - Associate
+- Meta Frontend Developer Professional Certificate
+- MongoDB Certified Developer
+
+EXPERIENCE
+----------
+Senior Full Stack Developer | WebSolutions Inc.
+January 2024 - Present
+- Lead development of e-commerce platform serving 500K+ monthly users
+- Architected microservices backend using Node.js and PostgreSQL
+- Implemented real-time features using WebSockets and Redis
+- Reduced page load time by 55% through performance optimization
+- Mentored team of 4 junior developers
+- Established code review processes and best practices
+
+Full Stack Developer | StartupX
+June 2023 - December 2023
+- Built responsive SaaS application using React and Next.js
+- Developed RESTful APIs using Express.js and MongoDB
+- Implemented authentication using JWT and OAuth 2.0
+- Created automated testing suite with 85% code coverage
+- Collaborated with UX designers to implement pixel-perfect designs
+- Deployed applications on AWS using Docker containers
+
+Frontend Developer | Digital Agency Pro
+July 2022 - May 2023
+- Developed client websites using React and Vue.js
+- Created reusable component libraries for consistent UI
+- Implemented responsive designs supporting all device sizes
+- Optimized SEO resulting in 40% increase in organic traffic
+- Integrated third-party APIs including Stripe, SendGrid, and Twilio
+
+Web Development Intern | TechCo
+Summer 2021
+- Built interactive dashboards using React and Chart.js
+- Wrote clean, maintainable code following ESLint standards
+- Participated in agile development process and daily standups
+- Fixed bugs and implemented feature requests
+
+PROJECTS
+--------
+Social Media Dashboard
+- Built full-stack application with React, Node.js, and PostgreSQL
+- Implemented real-time notifications using WebSockets
+- Achieved 100/100 Lighthouse performance score
+- Deployed on AWS with CI/CD pipeline
+- 1000+ registered users
+
+E-Commerce Platform
+- Developed headless e-commerce solution using Next.js and Shopify API
+- Implemented advanced search with Elasticsearch
+- Integrated payment processing with Stripe
+- Built admin dashboard for inventory management
+
+Task Management App
+- Created collaborative task app using React and Firebase
+- Implemented drag-and-drop functionality with react-beautiful-dnd
+- Real-time synchronization across devices
+- PWA with offline support
+
+ACHIEVEMENTS
+-----------
+- Contributed to open-source projects with 5K+ combined stars
+- Published NPM package with 10K+ weekly downloads
+- Tech blog with 50+ articles and 25K+ monthly views
+- Hackathon winner - Miami Tech Week 2023

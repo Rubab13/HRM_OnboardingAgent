@@ -1,0 +1,45 @@
+{
+  "personalInfo": {
+    "firstName": "Rubab",
+    "lastName": "Ahmad",
+    "email": "rubab@gmail.com",
+    "phone": "022423423333",
+    "dateOfBirth": "2002-12-12",
+    "linkedin": "",
+    "github": "",
+    "location": {
+      "city": "Rawalpindi",
+      "state": "Punjab",
+      "country": "pakistan"
+    }
+  },
+  "education": [
+    {
+      "degree": "dummy",
+      "field": "data science",
+      "institution": "comsats university islamabad",
+      "startDate": "2022-12",
+      "endDate": "2026-12",
+      "gpa": null
+    }
+  ],
+  "experience": [
+    {
+      "title": "data scientist",
+      "company": "dummy",
+      "startDate": "2024-12",
+      "endDate": "2026-12",
+      "description": "dummy description"
+    }
+  ],
+  "skills": {
+    "programming": [],
+    "frameworks": [],
+    "tools": []
+  },
+  "certifications": [],
+  "targetRole": "Software Engineer",
+  "yearsOfExperience": 2,
+  "applicationDate": "2026-01-29",
+  "status": "pending"
+}

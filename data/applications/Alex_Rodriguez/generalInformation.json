@@ -1,0 +1,95 @@
+{
+  "personalInfo": {
+    "firstName": "Alex",
+    "lastName": "Rodriguez",
+    "email": "alex.rodriguez@email.com",
+    "phone": "(555) 456-7890",
+    "location": {
+      "city": "Miami",
+      "state": "FL",
+      "country": "USA"
+    },
+    "dateOfBirth": "2000-05-14",
+    "linkedin": "linkedin.com/in/alexrodriguez",
+    "github": "github.com/alexrodriguez",
+    "portfolio": "alexrodriguez.dev",
+    "twitter": "@alexdevs"
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Science",
+      "field": "Computer Science",
+      "institution": "University of Florida",
+      "startDate": "2019-08",
+      "endDate": "2023-05",
+      "gpa": 3.75,
+      "honors": ["Dean's List"],
+      "minor": "User Experience Design"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Senior Full Stack Developer",
+      "company": "WebSolutions Inc.",
+      "startDate": "2024-01",
+      "endDate": "present",
+      "description": "Leading development of e-commerce platform and mentoring junior developers"
+    },
+    {
+      "title": "Full Stack Developer",
+      "company": "StartupX",
+      "startDate": "2023-06",
+      "endDate": "2023-12",
+      "description": "Built SaaS application with React and Node.js"
+    },
+    {
+      "title": "Frontend Developer",
+      "company": "Digital Agency Pro",
+      "startDate": "2022-07",
+      "endDate": "2023-05",
+      "description": "Developed client websites and component libraries"
+    },
+    {
+      "title": "Web Development Intern",
+      "company": "TechCo",
+      "startDate": "2021-06",
+      "endDate": "2021-08",
+      "description": "Built interactive dashboards with React"
+    }
+  ],
+  "skills": {
+    "frontend": {
+      "languages": ["JavaScript", "TypeScript", "HTML5", "CSS3", "SASS"],
+      "frameworks": ["React", "Next.js", "Vue.js", "Angular", "Svelte"],
+      "stateManagement": ["Redux", "Zustand", "Context API", "Recoil"],
+      "uiLibraries": ["Material-UI", "Tailwind CSS", "Chakra UI", "Ant Design"],
+      "testing": ["Jest", "React Testing Library", "Cypress", "Playwright"]
+    },
+    "backend": {
+      "runtime": ["Node.js", "Deno"],
+      "frameworks": ["Express.js", "NestJS", "Fastify", "Koa"],
+      "databases": ["PostgreSQL", "MongoDB", "MySQL", "Redis"],
+      "orms": ["Prisma", "TypeORM", "Sequelize"],
+      "apis": ["REST", "GraphQL", "WebSockets", "gRPC"]
+    },
+    "devops": {
+      "cloud": ["AWS Lambda", "AWS S3", "CloudFront", "EC2", "Vercel", "Netlify"],
+      "containers": ["Docker", "Docker Compose"],
+      "cicd": ["GitHub Actions", "GitLab CI", "CircleCI"],
+      "buildTools": ["Webpack", "Vite", "Turbopack", "esbuild"]
+    }
+  },
+  "certifications": [
+    "AWS Certified Developer - Associate",
+    "Meta Frontend Developer Professional Certificate",
+    "MongoDB Certified Developer"
+  ],
+  "targetRole": "Senior Full Stack Developer",
+  "applicationDate": "2026-01-22",
+  "status": "pending",
+  "yearsOfExperience": 4,
+  "openSource": [
+    "NPM package maintainer - 10K+ weekly downloads",
+    "Contributed to React, Next.js, and various open source projects"
+  ]
+}

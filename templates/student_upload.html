@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Application - TalentHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <a href="/" class="text-sm text-gray-500 hover:text-gray-700 mb-1 block">← Back to Home</a>
+                    <h1 class="text-2xl font-semibold text-gray-900">Submit Your Application</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <form id="applicationForm" class="space-y-6">
+            <!-- Personal Information -->
+            <section class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Personal Information</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">First Name *</label>
+                        <input type="text" name="firstName" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Last Name *</label>
+                        <input type="text" name="lastName" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                        <input type="email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+                        <input type="tel" name="phone" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Date of Birth *</label>
+                        <input type="date" name="dateOfBirth" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">LinkedIn</label>
+                        <input type="text" name="linkedin" placeholder="linkedin.com/in/yourname" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">GitHub</label>
+                        <input type="text" name="github" placeholder="github.com/yourusername" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Location *</label>
+                    <div class="grid grid-cols-3 gap-4">
+                        <input type="text" name="city" placeholder="City" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                        <input type="text" name="state" placeholder="State" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                        <input type="text" name="country" placeholder="Country" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Education</h2>
+                <div id="educationContainer">
+                    <div class="education-entry border border-gray-200 rounded-md p-4 mb-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Degree *</label>
+                                <input type="text" name="education[0][degree]" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Field of Study *</label>
+                                <input type="text" name="education[0][field]" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Institution *</label>
+                                <input type="text" name="education[0][institution]" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Start Date *</label>
+                                <input type="month" name="education[0][startDate]" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">End Date *</label>
+                                <input type="month" name="education[0][endDate]" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">GPA</label>
+                                <input type="number" step="0.01" name="education[0][gpa]" placeholder="3.5" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" onclick="addEducation()" class="text-sm text-blue-600 hover:text-blue-700 font-medium">+ Add Another Degree</button>
+            </section>
+
+            <!-- Experience -->
+            <section class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Experience</h2>
+                <div id="experienceContainer">
+                    <div class="experience-entry border border-gray-200 rounded-md p-4 mb-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Job Title *</label>
+                                <input type="text" name="experience[0][title]" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Company *</label>
+                                <input type="text" name="experience[0][company]" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Start Date *</label>
+                                <input type="month" name="experience[0][startDate]" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
+                                <input type="month" name="experience[0][endDate]" placeholder="Leave empty if current" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Description *</label>
+                                <textarea name="experience[0][description]" rows="3" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" onclick="addExperience()" class="text-sm text-blue-600 hover:text-blue-700 font-medium">+ Add Another Experience</button>
+            </section>
+
+            <!-- Skills -->
+            <section class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Skills</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Programming Languages</label>
+                        <input type="text" name="skills_programming" placeholder="Python, JavaScript, Java (comma separated)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Frameworks & Libraries</label>
+                        <input type="text" name="skills_frameworks" placeholder="React, Django, TensorFlow (comma separated)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Tools & Technologies</label>
+                        <input type="text" name="skills_tools" placeholder="Git, Docker, AWS (comma separated)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Additional Information -->
+            <section class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Additional Information</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Target Role *</label>
+                        <input type="text" name="targetRole" required placeholder="e.g., Software Engineer, Data Scientist" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Years of Experience *</label>
+                        <input type="number" step="0.5" name="yearsOfExperience" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Certifications</label>
+                        <input type="text" name="certifications" placeholder="AWS Certified, PMP (comma separated)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resume Upload -->
+            <section class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Resume Upload</h2>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Upload Resume (PDF) *</label>
+                    <input type="file" name="resume" accept=".pdf" required class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                </div>
+            </section>
+
+            <!-- Submit Button -->
+            <div class="flex justify-end gap-4">
+                <a href="/" class="px-6 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                    Cancel
+                </a>
+                <button type="submit" class="px-6 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Submit Application
+                </button>
+            </div>
+        </form>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg p-8 max-w-md w-full text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Application Submitted!</h3>
+                <p class="text-gray-600 mb-6">Your application has been successfully submitted. We'll review it and get back to you soon.</p>
+                <a href="/" class="inline-block px-6 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let educationCount = 1;
+        let experienceCount = 1;
+
+        function addEducation() {
+            const container = document.getElementById('educationContainer');
+            const newEntry = document.createElement('div');
+            newEntry.className = 'education-entry border border-gray-200 rounded-md p-4 mb-4';
+            newEntry.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Degree</label>
+                        <input type="text" name="education[${educationCount}][degree]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Field of Study</label>
+                        <input type="text" name="education[${educationCount}][field]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Institution</label>
+                        <input type="text" name="education[${educationCount}][institution]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+                        <input type="month" name="education[${educationCount}][startDate]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
+                        <input type="month" name="education[${educationCount}][endDate]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">GPA</label>
+                        <input type="number" step="0.01" name="education[${educationCount}][gpa]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                </div>
+            `;
+            container.appendChild(newEntry);
+            educationCount++;
+        }
+
+        function addExperience() {
+            const container = document.getElementById('experienceContainer');
+            const newEntry = document.createElement('div');
+            newEntry.className = 'experience-entry border border-gray-200 rounded-md p-4 mb-4';
+            newEntry.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Job Title</label>
+                        <input type="text" name="experience[${experienceCount}][title]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                        <input type="text" name="experience[${experienceCount}][company]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+                        <input type="month" name="experience[${experienceCount}][startDate]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
+                        <input type="month" name="experience[${experienceCount}][endDate]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                        <textarea name="experience[${experienceCount}][description]" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 text-sm"></textarea>
+                    </div>
+                </div>
+            `;
+            container.appendChild(newEntry);
+            experienceCount++;
+        }
+
+        document.getElementById('applicationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = {
+                personalInfo: {
+                    firstName: formData.get('firstName'),
+                    lastName: formData.get('lastName'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    dateOfBirth: formData.get('dateOfBirth'),
+                    linkedin: formData.get('linkedin') || '',
+                    github: formData.get('github') || '',
+                    location: {
+                        city: formData.get('city'),
+                        state: formData.get('state'),
+                        country: formData.get('country')
+                    }
+                },
+                education: [],
+                experience: [],
+                skills: {
+                    programming: formData.get('skills_programming')?.split(',').map(s => s.trim()).filter(s => s) || [],
+                    frameworks: formData.get('skills_frameworks')?.split(',').map(s => s.trim()).filter(s => s) || [],
+                    tools: formData.get('skills_tools')?.split(',').map(s => s.trim()).filter(s => s) || []
+                },
+                certifications: formData.get('certifications')?.split(',').map(s => s.trim()).filter(s => s) || [],
+                targetRole: formData.get('targetRole'),
+                yearsOfExperience: parseFloat(formData.get('yearsOfExperience'))
+            };
+
+            // Parse education entries
+            for (let i = 0; i < educationCount; i++) {
+                const degree = formData.get(`education[${i}][degree]`);
+                if (degree) {
+                    data.education.push({
+                        degree: degree,
+                        field: formData.get(`education[${i}][field]`),
+                        institution: formData.get(`education[${i}][institution]`),
+                        startDate: formData.get(`education[${i}][startDate]`),
+                        endDate: formData.get(`education[${i}][endDate]`),
+                        gpa: parseFloat(formData.get(`education[${i}][gpa]`)) || null
+                    });
+                }
+            }
+
+            // Parse experience entries
+            for (let i = 0; i < experienceCount; i++) {
+                const title = formData.get(`experience[${i}][title]`);
+                if (title) {
+                    data.experience.push({
+                        title: title,
+                        company: formData.get(`experience[${i}][company]`),
+                        startDate: formData.get(`experience[${i}][startDate]`),
+                        endDate: formData.get(`experience[${i}][endDate]`) || 'present',
+                        description: formData.get(`experience[${i}][description]`)
+                    });
+                }
+            }
+
+            // Create new FormData for file upload
+            const uploadData = new FormData();
+            uploadData.append('resume', formData.get('resume'));
+            uploadData.append('data', JSON.stringify(data));
+
+            try {
+                const response = await fetch('/api/student/upload', {
+                    method: 'POST',
+                    body: uploadData
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    document.getElementById('successMessage').classList.remove('hidden');
+                } else {
+                    alert('Error: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting your application.');
+            }
+        });
+    </script>
+</body>
+</html>

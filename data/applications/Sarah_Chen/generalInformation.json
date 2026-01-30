@@ -1,0 +1,68 @@
+{
+  "personalInfo": {
+    "firstName": "Sarah",
+    "lastName": "Chen",
+    "email": "sarah.chen@email.com",
+    "phone": "(555) 123-4567",
+    "location": {
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "USA"
+    },
+    "dateOfBirth": "1999-03-15",
+    "linkedin": "linkedin.com/in/sarahchen",
+    "github": "github.com/sarahchen"
+  },
+  "education": [
+    {
+      "degree": "Master of Science",
+      "field": "Data Science",
+      "institution": "University of California, Berkeley",
+      "startDate": "2022-08",
+      "endDate": "2024-05",
+      "gpa": 3.8,
+      "honors": ["Dean's List"]
+    },
+    {
+      "degree": "Bachelor of Science",
+      "field": "Computer Science",
+      "institution": "Stanford University",
+      "startDate": "2018-09",
+      "endDate": "2022-05",
+      "gpa": 3.7,
+      "honors": ["Dean's List", "Cum Laude"]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Data Science Intern",
+      "company": "TechCorp Solutions",
+      "startDate": "2023-06",
+      "endDate": "2023-08",
+      "description": "Built ML models for churn prediction and created analytics dashboards"
+    },
+    {
+      "title": "Research Assistant",
+      "company": "UC Berkeley Data Science Lab",
+      "startDate": "2023-01",
+      "endDate": "2024-05",
+      "description": "Developed deep learning models for NLP tasks and climate data analysis"
+    }
+  ],
+  "skills": {
+    "programming": ["Python", "R", "SQL", "Java"],
+    "frameworks": ["TensorFlow", "PyTorch", "Scikit-learn", "Keras"],
+    "tools": ["Pandas", "NumPy", "Tableau", "Apache Spark"],
+    "cloud": ["AWS SageMaker", "AWS S3", "Google Cloud Platform"],
+    "databases": ["PostgreSQL", "MongoDB", "Redis"]
+  },
+  "certifications": [
+    "AWS Certified Machine Learning - Specialty",
+    "TensorFlow Developer Certificate",
+    "Data Science Professional Certificate (IBM)"
+  ],
+  "targetRole": "Data Scientist",
+  "applicationDate": "2026-01-15",
+  "status": "pending",
+  "yearsOfExperience": 2
+}

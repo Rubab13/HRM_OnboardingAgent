@@ -1,0 +1,59 @@
+JOB TITLE: Cloud Engineer
+
+COMPANY NAME: Northbridge Digital Systems Inc.
+
+LOCATION: Remote (Canada & USA)  
+EMPLOYMENT TYPE: Full-time  
+DEPARTMENT: Cloud Infrastructure & Platform Engineering  
+REPORTS TO: Director of Engineering
+
+ABOUT THE COMPANY  
+Northbridge Digital Systems Inc. is a mid-sized technology company providing cloud-native platforms and infrastructure solutions for enterprise and SaaS clients across North America. We focus on reliability, security, and scalability, enabling businesses to build and operate modern applications in the cloud.
+
+POSITION SUMMARY  
+Northbridge Digital Systems Inc. is seeking a Cloud Engineer to support the design, deployment, and maintenance of secure, scalable cloud infrastructure. This role involves working closely with software engineering, DevOps, and security teams to ensure high availability, performance, and cost efficiency of cloud environments.
+
+The ideal candidate has strong hands-on experience with cloud platforms, automation, and infrastructure best practices, and is comfortable working in a remote, collaborative environment.
+
+KEY RESPONSIBILITIES  
+• Design, deploy, and manage cloud infrastructure primarily on AWS and Azure  
+• Build and maintain infrastructure using Infrastructure as Code (Terraform and CloudFormation)  
+• Support containerized workloads using Docker and Kubernetes  
+• Monitor cloud systems for performance, availability, and security issues  
+• Implement and maintain CI/CD pipelines for cloud deployments  
+• Collaborate with development teams to support application scalability and reliability  
+• Apply cloud security best practices, including IAM, network security, and encryption  
+• Troubleshoot infrastructure incidents and participate in root cause analysis  
+• Optimize cloud costs and resource utilization  
+• Maintain clear documentation for cloud architecture and operational procedures  
+
+REQUIRED QUALIFICATIONS  
+• Bachelor’s degree in Computer Science, Engineering, or a related technical field, or equivalent professional experience  
+• 2–4 years of experience working in cloud or infrastructure engineering roles  
+• Hands-on experience with AWS or Azure services  
+• Strong understanding of Linux systems and networking fundamentals  
+• Experience with containerization and orchestration tools (Docker, Kubernetes)  
+• Familiarity with CI/CD tools and DevOps workflows  
+• Proficiency in scripting or automation using Python, Bash, or PowerShell  
+• Strong problem-solving and communication skills  
+
+PREFERRED QUALIFICATIONS  
+• Cloud certifications such as AWS Certified Solutions Architect or Azure Administrator  
+• Experience with monitoring and logging tools such as CloudWatch, Prometheus, or Grafana  
+• Knowledge of security and compliance best practices  
+• Experience supporting production systems with high availability requirements  
+• Prior experience working with distributed or remote teams  
+
+WHAT WE OFFER  
+• Competitive salary based on experience  
+• Fully remote work environment  
+• Flexible working hours  
+• Paid time off and company holidays  
+• Professional development budget and certification support  
+• Collaborative, engineering-driven culture  
+
+EQUAL OPPORTUNITY EMPLOYER  
+Northbridge Digital Systems Inc. is an equal opportunity employer. We are committed to creating an inclusive workplace and consider all qualified applicants regardless of race, religion, gender, age, disability, or any other protected status.
+
+HOW TO APPLY  
+Interested candidates should submit their resume to careers@northbridgedigital.com. Only shortlisted candidates will be contacted.
