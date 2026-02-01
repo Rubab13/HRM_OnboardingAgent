@@ -127,18 +127,36 @@ function createCandidateCard(candidate, index) {
     const fullName = personalInfo.fullName || `${personalInfo.firstName || ''} ${personalInfo.lastName || ''}`.trim() || 'Unknown';
     const email = personalInfo.email || 'N/A';
     const phone = personalInfo.phone || 'N/A';
-    const location = personalInfo.location || 'N/A';
+    
+    // Handle location as either object or string
+    let location = 'N/A';
+    if (personalInfo.location) {
+        if (typeof personalInfo.location === 'object') {
+            const loc = personalInfo.location;
+            location = [loc.city, loc.state, loc.country].filter(Boolean).join(', ');
+        } else {
+            location = personalInfo.location;
+        }
+    }
     
     const initials = fullName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
     
+    // Extract skills from nested structure
     const skills = candidate.skills || {};
-    const allSkills = [
-        ...(skills.technical || []),
-        ...(skills.programming || []),
-        ...(skills.frameworks || []),
-        ...(skills.tools || []),
-        ...(skills.cloud || [])
-    ];
+    let allSkills = [];
+    
+    // Recursively extract all skill arrays from nested objects
+    function extractSkills(obj) {
+        for (let key in obj) {
+            if (Array.isArray(obj[key])) {
+                allSkills.push(...obj[key]);
+            } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+                extractSkills(obj[key]);
+            }
+        }
+    }
+    
+    extractSkills(skills);
     const displaySkills = allSkills.slice(0, 6);
     
     const education = candidate.education && candidate.education.length > 0 ? candidate.education[0] : {};
@@ -274,12 +292,13 @@ function displayShortlistedCandidates(candidates) {
     }
     
     container.innerHTML = candidates.map((candidate, index) => {
-        const personalInfo = candidate.candidate_info?.personalInformation || candidate.candidate_info?.personalInfo || {};
-        const fullName = personalInfo.fullName || `${personalInfo.firstName || ''} ${personalInfo.lastName || ''}`.trim() || 'Unknown';
-        const email = personalInfo.email || 'N/A';
+        // Use candidate_name directly from the response
+        const fullName = candidate.candidate_name || 'Unknown';
+        const email = candidate.email || 'N/A';
+        const phone = candidate.phone || 'N/A';
         
         return `
-            <div class="border border-gray-200 rounded-lg p-5 hover:border-blue-300 transition-colors">
+            <div class="border border-gray-200 rounded-lg p-5 hover:border-blue-300 transition-colors animate-fade-in" style="animation-delay: ${index * 0.1}s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold">
@@ -288,6 +307,7 @@ function displayShortlistedCandidates(candidates) {
                         <div>
                             <h3 class="font-semibold text-gray-900">${fullName}</h3>
                             <p class="text-sm text-gray-600">${email}</p>
+                            ${phone !== 'N/A' ? `<p class="text-sm text-gray-600">${phone}</p>` : ''}
                         </div>
                     </div>
                     <div class="text-right">
@@ -296,35 +316,27 @@ function displayShortlistedCandidates(candidates) {
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-3 gap-3 mb-3 text-sm">
-                    <div>
-                        <p class="text-gray-500 text-xs">Skills Match</p>
-                        <p class="font-medium text-gray-900">${candidate.skills_match || 'N/A'}</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-500 text-xs">Experience</p>
-                        <p class="font-medium text-gray-900">${candidate.experience_match || 'N/A'}</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-500 text-xs">Education</p>
-                        <p class="font-medium text-gray-900">${candidate.education_match || 'N/A'}</p>
-                    </div>
+                ${candidate.recommendation_reason ? `
+                <div class="mb-3 p-3 bg-blue-50 rounded-lg">
+                    <p class="text-xs font-medium text-blue-900 mb-1">Recommendation:</p>
+                    <p class="text-sm text-blue-800">${candidate.recommendation_reason}</p>
                 </div>
+                ` : ''}
                 
-                ${candidate.strengths && candidate.strengths.length > 0 ? `
+                ${candidate.key_strengths && candidate.key_strengths.length > 0 ? `
                 <div class="mb-3">
-                    <p class="text-xs font-medium text-gray-700 mb-1">Strengths:</p>
+                    <p class="text-xs font-medium text-gray-700 mb-2">Key Strengths:</p>
                     <ul class="text-sm text-gray-600 space-y-1">
-                        ${candidate.strengths.map(s => `<li>• ${s}</li>`).join('')}
+                        ${candidate.key_strengths.map(s => `<li class="flex items-start"><span class="text-green-600 mr-2">✓</span><span>${s}</span></li>`).join('')}
                     </ul>
                 </div>
                 ` : ''}
                 
-                ${candidate.interview_focus && candidate.interview_focus.length > 0 ? `
+                ${candidate.interview_focus_areas && candidate.interview_focus_areas.length > 0 ? `
                 <div>
-                    <p class="text-xs font-medium text-gray-700 mb-1">Interview Focus:</p>
+                    <p class="text-xs font-medium text-gray-700 mb-2">Interview Focus Areas:</p>
                     <ul class="text-sm text-gray-600 space-y-1">
-                        ${candidate.interview_focus.map(f => `<li>• ${f}</li>`).join('')}
+                        ${candidate.interview_focus_areas.map(f => `<li class="flex items-start"><span class="text-blue-600 mr-2">→</span><span>${f}</span></li>`).join('')}
                     </ul>
                 </div>
                 ` : ''}

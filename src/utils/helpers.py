@@ -39,12 +39,23 @@ def format_candidate_info(candidate: Dict[str, Any]) -> str:
         experience_list.append(exp_str)
     experience_str = "; ".join(experience_list) if experience_list else "Not specified"
     
-    # Format skills
+    # Format skills - recursively extract all skill arrays from nested structure
     skills = candidate.get('skills', {})
     all_skills = []
-    for skill_category in ['programming', 'frameworks', 'tools', 'cloud', 'databases']:
-        if skill_category in skills and isinstance(skills[skill_category], list):
-            all_skills.extend(skills[skill_category])
+    
+    def extract_skills_recursive(obj):
+        """Recursively extract all skills from nested objects"""
+        if isinstance(obj, list):
+            # If it's a list of strings, add them as skills
+            for item in obj:
+                if isinstance(item, str):
+                    all_skills.append(item)
+        elif isinstance(obj, dict):
+            # Recursively process nested dictionaries
+            for value in obj.values():
+                extract_skills_recursive(value)
+    
+    extract_skills_recursive(skills)
     skills_str = ", ".join(all_skills) if all_skills else "Not specified"
     
     # Format certifications

@@ -1,0 +1,96 @@
+{
+  "personalInfo": {
+    "firstName": "Maida",
+    "lastName": "Sajjad",
+    "email": "maida.sajjad@email.com",
+    "phone": "(555) 567-3421",
+    "location": {
+      "city": "Calgary",
+      "state": "AB",
+      "country": "Canada"
+    },
+    "dateOfBirth": "2000-09-28",
+    "linkedin": "linkedin.com/in/maidasajjad",
+    "github": "github.com/maidasajjad",
+    "portfolio": "maidasajjad.dev"
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Science",
+      "field": "Computer Science",
+      "institution": "University of Calgary",
+      "startDate": "2018-09",
+      "endDate": "2022-06",
+      "gpa": 3.78,
+      "honors": ["Dean's List", "Computer Science Achievement Award"]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Backend Software Engineer",
+      "company": "DataTech Solutions",
+      "startDate": "2023-07",
+      "endDate": "present",
+      "description": "Developing scalable backend services and RESTful APIs using Node.js, Python, and PostgreSQL. Building microservices architecture and implementing data processing pipelines"
+    },
+    {
+      "title": "Junior Backend Developer",
+      "company": "TechInnovate Inc.",
+      "startDate": "2022-07",
+      "endDate": "2023-06",
+      "description": "Built server-side applications using Python and Django, designed database schemas, and integrated third-party APIs"
+    },
+    {
+      "title": "Software Development Intern",
+      "company": "CloudSystems Corp",
+      "startDate": "2021-06",
+      "endDate": "2021-08",
+      "description": "Assisted in backend development, wrote API endpoints, and performed database optimization"
+    }
+  ],
+  "skills": {
+    "backend": {
+      "languages": ["Python", "Node.js", "Java", "Go"],
+      "frameworks": ["Django", "Flask", "FastAPI", "Express.js", "NestJS", "Spring Boot"],
+      "databases": ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Elasticsearch"],
+      "orms": ["SQLAlchemy", "Django ORM", "Prisma", "TypeORM"],
+      "apis": ["REST API", "GraphQL", "WebSockets", "gRPC"]
+    },
+    "architecture": {
+      "patterns": ["Microservices", "MVC", "Repository Pattern", "CQRS"],
+      "messaging": ["RabbitMQ", "Kafka", "Redis Pub/Sub"],
+      "caching": ["Redis", "Memcached"],
+      "authentication": ["JWT", "OAuth 2.0", "Session-based Auth"]
+    },
+    "devtools": {
+      "versionControl": ["Git", "GitHub", "GitLab"],
+      "containerization": ["Docker", "Docker Compose"],
+      "testing": ["PyTest", "Jest", "Postman", "unittest"],
+      "ci": ["GitHub Actions", "Jenkins"]
+    },
+    "other": {
+      "dataProcessing": ["Pandas", "NumPy", "Celery"],
+      "webServers": ["Nginx", "Apache"],
+      "documentation": ["Swagger/OpenAPI", "Postman"]
+    }
+  },
+  "certifications": [
+    "Python for Everybody Specialization (Coursera)",
+    "MongoDB Developer Certification",
+    "PostgreSQL Database Administration"
+  ],
+  "targetRole": "Backend Developer",
+  "applicationDate": "2026-01-26",
+  "status": "pending",
+  "yearsOfExperience": 2.5,
+  "projects": [
+    "Built RESTful API serving 50K+ requests per day with 99.5% uptime",
+    "Designed and implemented microservices architecture for e-commerce platform",
+    "Developed data processing pipeline handling 1M+ records daily using Celery and Redis"
+  ],
+  "additionalInfo": {
+    "remoteWorkExperience": true,
+    "availableToStart": "1 month notice",
+    "willingToRelocate": false
+  }
+}

@@ -2,44 +2,89 @@
   "personalInfo": {
     "firstName": "Rubab",
     "lastName": "Ahmad",
-    "email": "rubab@gmail.com",
-    "phone": "022423423333",
-    "dateOfBirth": "2002-12-12",
-    "linkedin": "",
-    "github": "",
+    "email": "rubab.ahmad@email.com",
+    "phone": "(555) 234-8901",
     "location": {
-      "city": "Rawalpindi",
-      "state": "Punjab",
-      "country": "pakistan"
-    }
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "Canada"
+    },
+    "dateOfBirth": "2001-07-15",
+    "linkedin": "linkedin.com/in/rubabahmad",
+    "github": "github.com/rubabahmad",
+    "portfolio": "rubabahmad.dev"
   },
   "education": [
     {
-      "degree": "dummy",
-      "field": "data science",
-      "institution": "comsats university islamabad",
-      "startDate": "2022-12",
-      "endDate": "2026-12",
-      "gpa": null
+      "degree": "Bachelor of Science",
+      "field": "Web Development and Design",
+      "institution": "British Columbia Institute of Technology",
+      "startDate": "2019-09",
+      "endDate": "2023-05",
+      "gpa": 3.65,
+      "honors": ["Dean's List", "Best UI/UX Project Award"]
     }
   ],
   "experience": [
     {
-      "title": "data scientist",
-      "company": "dummy",
-      "startDate": "2024-12",
-      "endDate": "2026-12",
-      "description": "dummy description"
+      "title": "Frontend Developer",
+      "company": "Creative Digital Agency",
+      "startDate": "2023-06",
+      "endDate": "present",
+      "description": "Developing responsive web applications and interactive user interfaces using React, TypeScript, and modern CSS frameworks"
+    },
+    {
+      "title": "Junior Frontend Developer",
+      "company": "WebDesign Studio",
+      "startDate": "2022-06",
+      "endDate": "2023-05",
+      "description": "Built responsive websites and landing pages using HTML, CSS, JavaScript, and React"
+    },
+    {
+      "title": "Frontend Development Intern",
+      "company": "StartupHub Inc.",
+      "startDate": "2021-07",
+      "endDate": "2021-09",
+      "description": "Assisted in building UI components and implementing designs in React"
     }
   ],
   "skills": {
-    "programming": [],
-    "frameworks": [],
-    "tools": []
+    "frontend": {
+      "languages": ["JavaScript", "TypeScript", "HTML5", "CSS3", "SASS", "SCSS"],
+      "frameworks": ["React", "Next.js", "Vue.js", "Svelte"],
+      "stateManagement": ["Redux", "Redux Toolkit", "Context API", "Zustand", "Recoil"],
+      "styling": ["Tailwind CSS", "Bootstrap", "Material-UI", "Styled Components", "CSS Modules"],
+      "testing": ["Jest", "React Testing Library", "Vitest"],
+      "buildTools": ["Webpack", "Vite", "Parcel"]
+    },
+    "design": {
+      "tools": ["Figma", "Adobe XD", "Sketch", "Adobe Photoshop"],
+      "skills": ["UI/UX Design", "Responsive Design", "Mobile-First Design", "Prototyping", "Wireframing"]
+    },
+    "other": {
+      "versionControl": ["Git", "GitHub", "GitLab"],
+      "apis": ["REST APIs", "GraphQL"],
+      "performance": ["Web Vitals Optimization", "Lazy Loading", "Code Splitting"],
+      "accessibility": ["WCAG 2.1", "ARIA", "Semantic HTML"]
+    }
   },
-  "certifications": [],
-  "targetRole": "Software Engineer",
-  "yearsOfExperience": 2,
-  "applicationDate": "2026-01-29",
-  "status": "pending"
+  "certifications": [
+    "Meta Frontend Developer Professional Certificate",
+    "freeCodeCamp Responsive Web Design Certification",
+    "Google UX Design Professional Certificate"
+  ],
+  "targetRole": "Frontend Developer",
+  "applicationDate": "2026-01-25",
+  "status": "pending",
+  "yearsOfExperience": 2.5,
+  "projects": [
+    "Built e-commerce platform frontend with React and Redux, serving 10K+ daily users",
+    "Created design system and component library used across 5+ projects",
+    "Developed progressive web app with offline-first capabilities"
+  ],
+  "additionalInfo": {
+    "remoteWorkExperience": true,
+    "availableToStart": "2 weeks notice",
+    "willingToRelocate": false
+  }
 }

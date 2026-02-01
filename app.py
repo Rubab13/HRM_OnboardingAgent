@@ -63,7 +63,7 @@ async def get_jobs():
     """Get all job folders"""
     try:
         jobs = []
-        data_dir = "Data"
+        data_dir = "data"
         
         if not os.path.exists(data_dir):
             return JSONResponse(content={"jobs": [], "count": 0})
@@ -90,7 +90,7 @@ async def get_candidates(job_id: str):
     """Get all candidates for a specific job"""
     try:
         candidates = []
-        applications_dir = os.path.join("Data", job_id, "applications")
+        applications_dir = os.path.join("data", job_id, "applications")
         
         if not os.path.exists(applications_dir):
             return JSONResponse(content={"candidates": [], "count": 0})

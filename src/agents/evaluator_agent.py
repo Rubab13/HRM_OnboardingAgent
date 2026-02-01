@@ -78,14 +78,18 @@ class EvaluatorAgent:
             # Update ranks
             for idx, candidate in enumerate(shortlisted, 1):
                 candidate['rank'] = idx
-            
-            return {
+                
+            temp = {
                 'success': True,
                 'shortlisted_candidates': shortlisted,
                 'summary': evaluation_result.get('summary', {}),
                 'total_reviewed': len(screening_results),
                 'total_shortlisted': len(shortlisted)
             }
+            
+            print("this is my eval agent result: ", temp)
+            
+            return temp
             
         except Exception as e:
             # Fallback: Sort by score if AI evaluation fails
