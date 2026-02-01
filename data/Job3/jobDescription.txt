@@ -1,53 +1,55 @@
-JOB TITLE: DevOps Engineer
+JOB TITLE: AI Developer (RAG Architecture)
 
-COMPANY NAME: TechFlow Solutions Inc.
+COMPANY NAME: IntelliSystems AI Inc.
 
 LOCATION: Remote (USA & Canada)  
 EMPLOYMENT TYPE: Full-time  
-DEPARTMENT: Platform Engineering  
-REPORTS TO: VP of Engineering
+DEPARTMENT: AI Engineering & Research  
+REPORTS TO: VP of AI and Machine Learning
 
 ABOUT THE COMPANY  
-TechFlow Solutions Inc. is a fast-growing software company providing enterprise automation and workflow solutions to Fortune 500 companies across North America. Our platform enables businesses to streamline operations, reduce manual processes, and improve efficiency through intelligent automation.
+IntelliSystems AI Inc. is an innovative artificial intelligence company specializing in large language model applications and retrieval-augmented generation systems for enterprise clients. We develop cutting-edge AI solutions that help organizations leverage their knowledge bases, improve decision-making, and enhance customer experiences through intelligent automation.
 
 POSITION SUMMARY  
-TechFlow Solutions Inc. is seeking a DevOps Engineer to support the continuous integration, deployment, and infrastructure management of our cloud-native platform. This role involves building and maintaining CI/CD pipelines, automating infrastructure, and ensuring system reliability and performance.
+IntelliSystems AI Inc. is seeking an AI Developer with expertise in RAG (Retrieval-Augmented Generation) architecture to design and implement advanced AI systems that combine large language models with efficient information retrieval. This role involves building scalable RAG pipelines, optimizing vector databases, and creating intelligent applications that provide accurate, context-aware responses.
 
-The ideal candidate has a strong background in automation, cloud technologies, and a passion for improving developer productivity and system reliability.
+The ideal candidate has strong experience with LLMs, vector databases, embeddings, and modern AI frameworks, with a passion for pushing the boundaries of what's possible with retrieval-augmented generation systems.
 
 KEY RESPONSIBILITIES  
-• Design, implement, and maintain CI/CD pipelines using Jenkins, GitLab CI, or GitHub Actions  
-• Automate infrastructure provisioning and configuration using Terraform and Ansible  
-• Manage and optimize Kubernetes clusters for containerized applications  
-• Monitor system performance, availability, and security using Prometheus, Grafana, and ELK stack  
-• Implement infrastructure as code best practices  
-• Collaborate with development teams to improve deployment processes and system architecture  
-• Troubleshoot production incidents and participate in on-call rotations  
-• Implement backup, disaster recovery, and business continuity procedures  
-• Optimize cloud costs and resource utilization on AWS or GCP  
-• Maintain documentation for infrastructure, runbooks, and operational procedures  
+• Design and implement RAG (Retrieval-Augmented Generation) systems using LangChain, LlamaIndex, or similar frameworks  
+• Develop and optimize vector databases using Pinecone, Weaviate, or ChromaDB for efficient semantic search  
+• Build data ingestion pipelines for processing and chunking documents from various sources  
+• Create and fine-tune embedding models for optimal retrieval performance  
+• Integrate large language models (GPT-4, Claude, Gemini) with retrieval systems  
+• Implement prompt engineering strategies and context window optimization  
+• Develop evaluation metrics and testing frameworks for RAG system performance  
+• Optimize retrieval strategies including hybrid search, re-ranking, and query expansion  
+• Build APIs and microservices for RAG applications using FastAPI or Flask  
+• Monitor and improve system accuracy, latency, and cost efficiency  
 
 REQUIRED QUALIFICATIONS  
-• Bachelor's degree in Computer Science, Engineering, or related technical field, or equivalent experience  
-• 3–5 years of experience in DevOps, Site Reliability Engineering, or Infrastructure roles  
-• Strong hands-on experience with AWS or Google Cloud Platform  
-• Proficiency with containerization and orchestration tools (Docker, Kubernetes)  
-• Experience building and maintaining CI/CD pipelines  
-• Strong scripting skills in Python, Bash, or Go  
-• Experience with infrastructure as code tools such as Terraform or CloudFormation  
-• Understanding of networking, security, and Linux system administration  
-• Strong problem-solving and troubleshooting skills  
+• Bachelor's or Master's degree in Computer Science, AI, Machine Learning, or related field  
+• 3–5 years of experience in AI/ML development with focus on NLP and LLMs  
+• Strong hands-on experience with LangChain, LlamaIndex, or similar RAG frameworks  
+• Proficiency in Python and ML libraries (PyTorch, TensorFlow, Transformers)  
+• Experience with vector databases (Pinecone, Weaviate, Milvus, ChromaDB)  
+• Understanding of embedding models, semantic search, and information retrieval  
+• Experience with LLM APIs (OpenAI, Anthropic, Google Gemini)  
+• Knowledge of document processing and chunking strategies  
+• Strong problem-solving and optimization skills  
 
 PREFERRED QUALIFICATIONS  
-• Kubernetes certifications (CKA or CKAD)  
-• Experience with configuration management tools like Ansible or Chef  
-• Knowledge of GitOps principles and tools like ArgoCD or Flux  
-• Experience with service mesh technologies (Istio, Linkerd)  
-• Familiarity with security scanning and compliance automation  
-• Prior experience working in agile or fast-paced startup environments  
+• Experience with fine-tuning LLMs and custom embedding models  
+• Knowledge of advanced RAG techniques (HyDE, multi-query, fusion retrieval)  
+• Familiarity with graph databases and knowledge graphs  
+• Experience with MLOps practices and model deployment  
+• Understanding of responsible AI, hallucination mitigation, and safety  
+• Prior experience building production-grade AI applications  
 
 WHAT WE OFFER  
 • Competitive salary and equity options  
+• Fully remote work environment  
+• Access to latest AI tools and technologies  
 • Fully remote work with flexible hours  
 • Comprehensive health, dental, and vision insurance  
 • Paid time off and parental leave  

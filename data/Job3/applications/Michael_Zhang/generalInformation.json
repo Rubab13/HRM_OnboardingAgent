@@ -9,50 +9,61 @@
       "state": "CA",
       "country": "USA"
     },
-    "dateOfBirth": "1997-04-12",
-    "linkedin": "linkedin.com/in/michaelzhang-devops",
-    "github": "github.com/mzhang"
+    "dateOfBirth": "1994-04-12",
+    "linkedin": "linkedin.com/in/michaelzhang-ai",
+    "github": "github.com/mzhang-ai"
   },
   "education": [
+    {
+      "degree": "Master of Science",
+      "field": "Artificial Intelligence",
+      "institution": "Stanford University",
+      "startDate": "2017-09",
+      "endDate": "2019-06",
+      "gpa": 3.9,
+      "honors": ["Dean's List", "AI Research Award"]
+    },
     {
       "degree": "Bachelor of Science",
       "field": "Computer Science",
       "institution": "University of California, Berkeley",
-      "startDate": "2015-09",
-      "endDate": "2019-05",
-      "gpa": 3.6,
+      "startDate": "2012-09",
+      "endDate": "2016-05",
+      "gpa": 3.7,
       "honors": ["Dean's List"]
     }
   ],
   "experience": [
     {
-      "title": "DevOps Engineer",
-      "company": "CloudTech Solutions",
-      "startDate": "2019-07",
+      "title": "Senior AI Engineer (RAG Specialist)",
+      "company": "AI Solutions Lab",
+      "startDate": "2021-08",
       "endDate": "Present",
-      "description": "Built and maintained CI/CD pipelines using Jenkins and GitLab CI, managed Kubernetes clusters for containerized microservices"
+      "description": "Architected and deployed production RAG systems using LangChain and LlamaIndex. Built vector databases with Pinecone and Weaviate for semantic search. Developed custom embedding pipelines and integrated GPT-4, Claude, and Gemini APIs. Implemented advanced retrieval strategies including hybrid search and re-ranking. Optimized context window management and prompt engineering for accuracy."
     },
     {
-      "title": "System Administrator Intern",
-      "company": "Tech Startup Inc.",
-      "startDate": "2018-05",
-      "endDate": "2018-08",
-      "description": "Assisted with infrastructure automation and deployment"
+      "title": "Machine Learning Engineer",
+      "company": "NLP Innovations Inc.",
+      "startDate": "2019-07",
+      "endDate": "2021-07",
+      "description": "Built NLP models using transformers and BERT, developed document processing pipelines, implemented semantic search systems, and fine-tuned language models for domain-specific tasks"
     }
   ],
   "skills": {
-    "programming": ["Python", "Bash", "Go"],
-    "frameworks": ["Django", "Flask"],
-    "tools": ["Kubernetes", "Docker", "Terraform", "Jenkins", "GitLab CI", "Ansible", "Prometheus", "Grafana"],
-    "cloud": ["AWS", "GCP"],
-    "databases": ["PostgreSQL", "Redis", "MongoDB"]
+    "programming": ["Python", "SQL", "JavaScript"],
+    "frameworks": ["LangChain", "LlamaIndex", "PyTorch", "TensorFlow", "Transformers", "FastAPI", "Flask"],
+    "tools": ["OpenAI API", "Anthropic Claude", "Google Gemini", "Pinecone", "Weaviate", "ChromaDB", "Jupyter", "Docker"],
+    "cloud": ["AWS", "GCP", "Azure"],
+    "databases": ["PostgreSQL", "MongoDB", "Redis", "Elasticsearch"],
+    "specialties": ["RAG Architecture", "Vector Databases", "Embeddings", "Prompt Engineering", "LLM Integration", "Semantic Search"]
   },
   "certifications": [
-    "Certified Kubernetes Administrator (CKA)",
-    "AWS Certified Solutions Architect - Associate"
+    "AWS Certified Machine Learning - Specialty",
+    "DeepLearning.AI LangChain Professional",
+    "Google Cloud Professional ML Engineer"
   ],
-  "targetRole": "DevOps Engineer",
+  "targetRole": "AI Developer",
   "applicationDate": "2026-01-16",
   "status": "pending",
-  "yearsOfExperience": 5
+  "yearsOfExperience": 6
 }

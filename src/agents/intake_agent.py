@@ -1,4 +1,3 @@
-# Intake Agent - Processes Job Descriptions
 from typing import Dict, Any
 from ..llm_provider import GeminiProvider
 from ..prompts import JOB_INTAKE_PROMPT

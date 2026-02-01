@@ -10,49 +10,50 @@
       "country": "USA"
     },
     "dateOfBirth": "1997-05-30",
-    "linkedin": "linkedin.com/in/amandafoster",
-    "github": "github.com/afoster"
+    "linkedin": "linkedin.com/in/amandafoster-frontend",
+    "github": "github.com/afoster-dev"
   },
   "education": [
     {
       "degree": "Bachelor of Science",
-      "field": "Mathematics and Statistics",
+      "field": "Computer Science",
       "institution": "University of California, Los Angeles",
       "startDate": "2015-09",
       "endDate": "2019-05",
-      "gpa": 3.6,
+      "gpa": 3.5,
       "honors": ["Dean's List"]
     }
   ],
   "experience": [
     {
-      "title": "Data Analyst",
+      "title": "React Developer",
       "company": "E-Commerce Solutions Inc.",
-      "startDate": "2019-07",
+      "startDate": "2020-07",
       "endDate": "Present",
-      "description": "Analyzed customer data to drive marketing strategies, created dashboards using Tableau and Power BI"
+      "description": "Developed responsive web applications using React, Redux, and TypeScript. Built reusable components, integrated REST APIs, and implemented state management with Redux Toolkit"
     },
     {
-      "title": "Statistical Analyst Intern",
-      "company": "Market Research Group",
-      "startDate": "2018-06",
-      "endDate": "2018-08",
-      "description": "Conducted statistical analysis on survey data"
+      "title": "Junior Frontend Developer",
+      "company": "Digital Agency Pro",
+      "startDate": "2019-06",
+      "endDate": "2020-06",
+      "description": "Built websites using HTML, CSS, JavaScript, and React. Collaborated with designers to implement responsive UI designs"
     }
   ],
   "skills": {
-    "programming": ["SQL", "Python", "R", "SAS"],
-    "frameworks": ["Pandas", "NumPy", "Matplotlib"],
-    "tools": ["Tableau", "Excel", "SPSS", "SAS"],
-    "cloud": ["AWS", "Google Cloud"],
-    "databases": ["MySQL", "PostgreSQL"]
+    "programming": ["JavaScript", "TypeScript", "HTML5", "CSS3"],
+    "frameworks": ["React", "Redux", "Next.js", "Material-UI"],
+    "tools": ["Webpack", "npm", "Git", "VS Code", "Figma"],
+    "cloud": ["AWS", "Vercel"],
+    "databases": ["Firebase", "MongoDB"],
+    "testing": ["Jest", "React Testing Library"]
   },
   "certifications": [
-    "SAS Certified Specialist",
-    "Tableau Desktop Specialist"
+    "Meta React Developer Certificate",
+    "JavaScript Algorithms and Data Structures"
   ],
-  "targetRole": "Data Analyst",
+  "targetRole": "Frontend Developer",
   "applicationDate": "2026-01-19",
   "status": "pending",
-  "yearsOfExperience": 5
+  "yearsOfExperience": 4
 }

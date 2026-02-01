@@ -36,7 +36,7 @@ class GeminiProvider:
         """Generate JSON formatted response"""
         try:
             response = self.client.models.generate_content(
-                model='models/gemini-2.5-flash',
+                model='models/gemini-2.5-flash-lite',
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     temperature=0.3,

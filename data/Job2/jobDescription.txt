@@ -1,52 +1,54 @@
-JOB TITLE: Data Analyst
+JOB TITLE: Angular Developer
 
-COMPANY NAME: Apex Analytics Corp.
+COMPANY NAME: WebTech Innovations Inc.
 
-LOCATION: Hybrid (Toronto, ON & New York, NY)  
+LOCATION: Remote (USA & Canada)  
 EMPLOYMENT TYPE: Full-time  
-DEPARTMENT: Business Intelligence & Analytics  
-REPORTS TO: Head of Data Analytics
+DEPARTMENT: Frontend Engineering  
+REPORTS TO: Head of Frontend Development
 
 ABOUT THE COMPANY  
-Apex Analytics Corp. is a leading data consulting firm specializing in business intelligence, predictive analytics, and data-driven decision-making for enterprise clients across North America. We help organizations unlock insights from their data to drive growth and operational excellence.
+WebTech Innovations Inc. is a leading software development company specializing in modern web applications and digital solutions for enterprise clients across North America. We focus on creating responsive, scalable, and user-friendly web applications that drive business value and enhance user experiences.
 
 POSITION SUMMARY  
-Apex Analytics Corp. is seeking a Data Analyst to join our Business Intelligence team. This role involves analyzing complex datasets, creating reports and dashboards, and providing actionable insights to stakeholders. The ideal candidate will work closely with business teams to understand requirements and translate data into meaningful stories.
+WebTech Innovations Inc. is seeking an Angular Developer to join our Frontend Engineering team. This role involves building and maintaining modern web applications using Angular framework, collaborating with UX designers and backend teams, and ensuring high-quality user experiences. The ideal candidate will work closely with cross-functional teams to deliver robust, performant, and visually appealing web applications.
 
-The successful candidate has strong analytical skills, experience with data visualization tools, and the ability to communicate findings effectively to both technical and non-technical audiences.
+The successful candidate has strong expertise in Angular, TypeScript, and modern frontend development practices, with the ability to write clean, maintainable code and create responsive user interfaces.
 
 KEY RESPONSIBILITIES  
-• Analyze large datasets to identify trends, patterns, and insights  
-• Develop and maintain interactive dashboards and reports using Tableau and Power BI  
-• Write SQL queries to extract and transform data from relational databases  
-• Collaborate with business stakeholders to understand analytical requirements  
-• Perform statistical analysis and A/B testing to support business decisions  
-• Clean and validate data to ensure accuracy and consistency  
-• Create data visualizations and presentations for executive leadership  
-• Document analytical processes and data definitions  
-• Support data quality initiatives and data governance activities  
-• Stay current with analytics tools and industry best practices  
+• Develop and maintain web applications using Angular framework (version 12+)  
+• Write clean, efficient, and reusable TypeScript code following best practices  
+• Build responsive and mobile-friendly user interfaces using HTML5, CSS3, and Angular Material  
+• Integrate RESTful APIs and handle asynchronous data operations using RxJS  
+• Implement state management solutions using NgRx or similar libraries  
+• Collaborate with UX/UI designers to translate designs into functional interfaces  
+• Optimize application performance and ensure cross-browser compatibility  
+• Write unit tests using Jasmine and Karma, and end-to-end tests using Protractor or Cypress  
+• Participate in code reviews and maintain code quality standards  
+• Stay current with Angular updates, frontend trends, and best practices  
 
 REQUIRED QUALIFICATIONS  
-• Bachelor's degree in Statistics, Mathematics, Economics, Computer Science, or related field  
-• 2–3 years of experience in data analysis, business intelligence, or related role  
-• Strong proficiency in SQL for data extraction and manipulation  
-• Experience with data visualization tools such as Tableau or Power BI  
-• Proficiency in Microsoft Excel including pivot tables, VLOOKUP, and formulas  
-• Understanding of statistical concepts and methods  
-• Strong analytical and problem-solving skills  
-• Excellent written and verbal communication skills  
+• Bachelor's degree in Computer Science, Software Engineering, or related field  
+• 3–5 years of experience in frontend development with strong focus on Angular  
+• Expert knowledge of Angular framework (Angular 12+), TypeScript, and JavaScript  
+• Strong proficiency in HTML5, CSS3, and responsive design principles  
+• Experience with RxJS for reactive programming and state management  
+• Understanding of RESTful API integration and HTTP services  
+• Familiarity with version control systems, particularly Git  
+• Strong problem-solving and debugging skills  
+• Excellent communication and teamwork abilities  
 
 PREFERRED QUALIFICATIONS  
-• Experience with Python or R for statistical analysis  
-• Knowledge of data warehousing concepts and ETL processes  
-• Familiarity with Google Analytics or similar web analytics platforms  
-• Experience with A/B testing and experimental design  
-• Prior experience in consulting or client-facing roles  
+• Experience with NgRx for state management in Angular applications  
+• Knowledge of Angular Material or other component libraries  
+• Familiarity with build tools like Webpack, npm, and Angular CLI  
+• Experience with testing frameworks (Jasmine, Karma, Cypress)  
+• Understanding of CI/CD pipelines and DevOps practices  
+• Prior experience with agile development methodologies  
 
 WHAT WE OFFER  
 • Competitive salary based on experience  
-• Hybrid work model with flexible scheduling  
+• Fully remote work environment  
 • Comprehensive health and dental benefits  
 • Paid time off and company holidays  
 • Professional development and training opportunities  

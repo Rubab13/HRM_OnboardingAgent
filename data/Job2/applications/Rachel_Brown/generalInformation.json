@@ -9,50 +9,58 @@
       "state": "ON",
       "country": "Canada"
     },
-    "dateOfBirth": "2000-02-14",
-    "linkedin": "linkedin.com/in/rachelbrown-analytics",
-    "github": "github.com/rbrown"
+    "dateOfBirth": "1995-02-14",
+    "linkedin": "linkedin.com/in/rachelbrown-frontend",
+    "github": "github.com/rbrown-dev"
   },
   "education": [
     {
-      "degree": "Bachelor of Commerce",
-      "field": "Business Analytics",
-      "institution": "McMaster University",
-      "startDate": "2018-09",
-      "endDate": "2022-05",
-      "gpa": 3.9,
-      "honors": ["Dean's List", "Summa Cum Laude"]
+      "degree": "Bachelor of Science",
+      "field": "Computer Science",
+      "institution": "University of Toronto",
+      "startDate": "2013-09",
+      "endDate": "2017-05",
+      "gpa": 3.8,
+      "honors": ["Dean's List", "Magna Cum Laude"]
     }
   ],
   "experience": [
     {
-      "title": "Business Intelligence Analyst",
-      "company": "RetailMax Corp.",
-      "startDate": "2022-09",
+      "title": "Senior Angular Developer",
+      "company": "FinTech Solutions Inc.",
+      "startDate": "2021-03",
       "endDate": "Present",
-      "description": "Designed and implemented Tableau dashboards for inventory management, extracted insights from sales data using SQL and Excel"
+      "description": "Lead frontend development using Angular 14+, TypeScript, and RxJS. Built responsive web applications with Angular Material, implemented NgRx state management, and integrated RESTful APIs. Mentored junior developers and conducted code reviews."
     },
     {
-      "title": "Data Analytics Intern",
-      "company": "Consumer Insights Inc.",
-      "startDate": "2021-05",
-      "endDate": "2021-08",
-      "description": "Performed trend analysis to support strategic planning"
+      "title": "Frontend Developer",
+      "company": "WebDev Studios",
+      "startDate": "2018-06",
+      "endDate": "2021-02",
+      "description": "Developed single-page applications using Angular 10-12, created reusable components, implemented unit tests with Jasmine and Karma, and optimized application performance"
+    },
+    {
+      "title": "Junior Web Developer",
+      "company": "Digital Agency Pro",
+      "startDate": "2017-07",
+      "endDate": "2018-05",
+      "description": "Built responsive websites using HTML5, CSS3, JavaScript, and learned Angular framework fundamentals"
     }
   ],
   "skills": {
-    "programming": ["SQL", "Python"],
-    "frameworks": ["Pandas"],
-    "tools": ["Tableau", "Power BI", "Excel", "SPSS"],
-    "cloud": ["AWS"],
-    "databases": ["MySQL", "Oracle"]
+    "programming": ["TypeScript", "JavaScript", "HTML5", "CSS3", "SCSS"],
+    "frameworks": ["Angular 12-17", "RxJS", "NgRx", "Angular Material"],
+    "tools": ["Angular CLI", "Webpack", "npm", "Git", "VS Code", "Postman"],
+    "cloud": ["AWS", "Azure"],
+    "databases": ["MongoDB", "PostgreSQL"],
+    "testing": ["Jasmine", "Karma", "Cypress", "Jest"]
   },
   "certifications": [
-    "Tableau Desktop Certified Associate",
-    "Microsoft Excel Expert"
+    "Angular Certified Developer",
+    "Microsoft Certified: Azure Developer Associate"
   ],
-  "targetRole": "Data Analyst",
+  "targetRole": "Angular Developer",
   "applicationDate": "2026-01-22",
   "status": "pending",
-  "yearsOfExperience": 2
+  "yearsOfExperience": 7
 }

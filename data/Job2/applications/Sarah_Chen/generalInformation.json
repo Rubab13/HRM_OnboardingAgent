@@ -9,60 +9,51 @@
       "state": "CA",
       "country": "USA"
     },
-    "dateOfBirth": "1999-03-15",
-    "linkedin": "linkedin.com/in/sarahchen",
-    "github": "github.com/sarahchen"
+    "dateOfBirth": "1996-03-15",
+    "linkedin": "linkedin.com/in/sarahchen-angular",
+    "github": "github.com/sarahchen-dev"
   },
   "education": [
     {
-      "degree": "Master of Science",
-      "field": "Data Science",
-      "institution": "University of California, Berkeley",
-      "startDate": "2022-08",
-      "endDate": "2024-05",
-      "gpa": 3.8,
-      "honors": ["Dean's List"]
-    },
-    {
       "degree": "Bachelor of Science",
-      "field": "Computer Science",
-      "institution": "Stanford University",
-      "startDate": "2018-09",
-      "endDate": "2022-05",
+      "field": "Software Engineering",
+      "institution": "University of California, Berkeley",
+      "startDate": "2014-08",
+      "endDate": "2018-05",
       "gpa": 3.7,
       "honors": ["Dean's List", "Cum Laude"]
     }
   ],
   "experience": [
     {
-      "title": "Data Science Intern",
-      "company": "TechCorp Solutions",
-      "startDate": "2023-06",
-      "endDate": "2023-08",
-      "description": "Built ML models for churn prediction and created analytics dashboards"
+      "title": "Angular Developer",
+      "company": "Enterprise Web Solutions",
+      "startDate": "2020-04",
+      "endDate": "Present",
+      "description": "Developed enterprise-scale Angular applications using TypeScript, Angular 13+, and NgRx. Built responsive UI components with Angular Material, integrated REST APIs with RxJS, wrote comprehensive unit tests with Jasmine/Karma, and optimized bundle sizes for improved performance."
     },
     {
-      "title": "Research Assistant",
-      "company": "UC Berkeley Data Science Lab",
-      "startDate": "2023-01",
-      "endDate": "2024-05",
-      "description": "Developed deep learning models for NLP tasks and climate data analysis"
+      "title": "Frontend Engineer",
+      "company": "StartupTech Inc.",
+      "startDate": "2018-07",
+      "endDate": "2020-03",
+      "description": "Built modern web applications using Angular 8-11, implemented lazy loading and performance optimizations, collaborated with UX designers to create pixel-perfect interfaces, and maintained high code quality through code reviews"
     }
   ],
   "skills": {
-    "programming": ["Python", "R", "SQL", "Java"],
-    "frameworks": ["TensorFlow", "PyTorch", "Scikit-learn", "Keras"],
-    "tools": ["Pandas", "NumPy", "Tableau", "Apache Spark"],
-    "cloud": ["AWS SageMaker", "AWS S3", "Google Cloud Platform"],
-    "databases": ["PostgreSQL", "MongoDB", "Redis"]
+    "programming": ["TypeScript", "JavaScript", "HTML5", "CSS3", "Sass"],
+    "frameworks": ["Angular 12+", "RxJS", "NgRx", "Angular Material", "Bootstrap"],
+    "tools": ["Angular CLI", "Webpack", "npm", "Git", "Jest", "VS Code"],
+    "cloud": ["AWS", "Google Cloud Platform"],
+    "databases": ["PostgreSQL", "Firebase", "MongoDB"],
+    "testing": ["Jasmine", "Karma", "Cypress", "Protractor"]
   },
   "certifications": [
-    "AWS Certified Machine Learning - Specialty",
-    "TensorFlow Developer Certificate",
-    "Data Science Professional Certificate (IBM)"
+    "Angular Advanced Concepts Certification",
+    "Google Cloud Professional Developer"
   ],
-  "targetRole": "Data Scientist",
+  "targetRole": "Angular Developer",
   "applicationDate": "2026-01-15",
   "status": "pending",
-  "yearsOfExperience": 2
+  "yearsOfExperience": 6
 }

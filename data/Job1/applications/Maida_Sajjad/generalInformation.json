@@ -10,8 +10,8 @@
       "country": "Canada"
     },
     "dateOfBirth": "2000-09-28",
-    "linkedin": "linkedin.com/in/maidasajjad",
-    "github": "github.com/maidasajjad",
+    "linkedin": "linkedin.com/in/maidasajjad-sre",
+    "github": "github.com/maidasajjad-ops",
     "portfolio": "maidasajjad.dev"
   },
   "education": [
@@ -27,66 +27,62 @@
   ],
   "experience": [
     {
-      "title": "Backend Software Engineer",
+      "title": "Site Reliability Engineer",
       "company": "DataTech Solutions",
       "startDate": "2023-07",
       "endDate": "present",
-      "description": "Developing scalable backend services and RESTful APIs using Node.js, Python, and PostgreSQL. Building microservices architecture and implementing data processing pipelines"
+      "description": "Ensuring high availability and reliability of production systems. Managing on-premise infrastructure and monitoring with Prometheus and Grafana. Implementing automation scripts and incident response procedures"
     },
     {
-      "title": "Junior Backend Developer",
+      "title": "Junior DevOps Engineer",
       "company": "TechInnovate Inc.",
       "startDate": "2022-07",
       "endDate": "2023-06",
-      "description": "Built server-side applications using Python and Django, designed database schemas, and integrated third-party APIs"
+      "description": "Built CI/CD pipelines using Jenkins and GitLab CI, managed Docker containers, assisted with Linux server administration and configuration management"
     },
     {
-      "title": "Software Development Intern",
+      "title": "IT Operations Intern",
       "company": "CloudSystems Corp",
       "startDate": "2021-06",
       "endDate": "2021-08",
-      "description": "Assisted in backend development, wrote API endpoints, and performed database optimization"
+      "description": "Assisted in system monitoring, wrote automation scripts in Python, and performed basic cloud infrastructure tasks"
     }
   ],
   "skills": {
-    "backend": {
-      "languages": ["Python", "Node.js", "Java", "Go"],
-      "frameworks": ["Django", "Flask", "FastAPI", "Express.js", "NestJS", "Spring Boot"],
-      "databases": ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Elasticsearch"],
-      "orms": ["SQLAlchemy", "Django ORM", "Prisma", "TypeORM"],
-      "apis": ["REST API", "GraphQL", "WebSockets", "gRPC"]
+    "infrastructure": {
+      "servers": ["Linux (Ubuntu, CentOS)", "Windows Server"],
+      "automation": ["Ansible", "Chef", "Python", "Bash"],
+      "monitoring": ["Prometheus", "Grafana", "Nagios", "Zabbix"],
+      "cicd": ["Jenkins", "GitLab CI", "GitHub Actions"]
     },
-    "architecture": {
-      "patterns": ["Microservices", "MVC", "Repository Pattern", "CQRS"],
-      "messaging": ["RabbitMQ", "Kafka", "Redis Pub/Sub"],
-      "caching": ["Redis", "Memcached"],
-      "authentication": ["JWT", "OAuth 2.0", "Session-based Auth"]
+    "cloud": {
+      "platforms": ["AWS (basic)", "Azure (learning)"],
+      "services": ["EC2", "S3", "CloudWatch"],
+      "experience": "Limited cloud experience, primarily on-premise infrastructure"
     },
-    "devtools": {
-      "versionControl": ["Git", "GitHub", "GitLab"],
-      "containerization": ["Docker", "Docker Compose"],
-      "testing": ["PyTest", "Jest", "Postman", "unittest"],
-      "ci": ["GitHub Actions", "Jenkins"]
+    "containers": {
+      "tools": ["Docker", "Docker Compose"],
+      "orchestration": "Basic Kubernetes knowledge"
     },
-    "other": {
-      "dataProcessing": ["Pandas", "NumPy", "Celery"],
-      "webServers": ["Nginx", "Apache"],
-      "documentation": ["Swagger/OpenAPI", "Postman"]
-    }
+    "scripting": {
+      "languages": ["Python", "Bash", "PowerShell"],
+      "automation": ["Infrastructure Automation", "Monitoring Scripts"]
+    },
+    "databases": ["PostgreSQL", "MySQL", "Redis"],
+    "versionControl": ["Git", "GitHub", "GitLab"]
   },
   "certifications": [
-    "Python for Everybody Specialization (Coursera)",
-    "MongoDB Developer Certification",
-    "PostgreSQL Database Administration"
+    "Linux Professional Institute Certification (LPIC-1)",
+    "Red Hat Certified System Administrator (RHCSA)"
   ],
-  "targetRole": "Backend Developer",
+  "targetRole": "Site Reliability Engineer",
   "applicationDate": "2026-01-26",
   "status": "pending",
   "yearsOfExperience": 2.5,
   "projects": [
-    "Built RESTful API serving 50K+ requests per day with 99.5% uptime",
-    "Designed and implemented microservices architecture for e-commerce platform",
-    "Developed data processing pipeline handling 1M+ records daily using Celery and Redis"
+    "Implemented monitoring stack using Prometheus and Grafana for 50+ servers",
+    "Automated deployment processes reducing deployment time by 40%",
+    "Developed incident response playbooks and runbooks"
   ],
   "additionalInfo": {
     "remoteWorkExperience": true,
