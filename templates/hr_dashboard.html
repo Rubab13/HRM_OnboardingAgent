@@ -6,20 +6,49 @@
     <title>HR Dashboard - TalentHub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom scrollbar for job list */
+        /* Color Scheme Variables */
+        :root {
+            --color-cream: #FAF9F6;
+            --color-golden: #D4AF37;
+            --color-golden-dark: #C5A028;
+            --color-black: #000000;
+            --color-light-golden: #F5EFE0;
+        }
+
+        .bg-cream {
+            background-color: var(--color-cream);
+        }
+        
+        .text-golden {
+            color: var(--color-golden);
+        }
+        
+        .bg-golden {
+            background-color: var(--color-golden);
+        }
+        
+        .border-golden {
+            border-color: var(--color-golden);
+        }
+        
+        .bg-light-golden {
+            background-color: var(--color-light-golden);
+        }
+
+        /* Custom scrollbar */
         #jobListContainer::-webkit-scrollbar {
             width: 6px;
         }
         #jobListContainer::-webkit-scrollbar-track {
-            background: #f1f5f9;
+            background: var(--color-cream);
             border-radius: 10px;
         }
         #jobListContainer::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+            background: var(--color-golden);
             border-radius: 10px;
         }
         #jobListContainer::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+            background: var(--color-golden-dark);
         }
 
         /* Smooth animations */
@@ -43,21 +72,18 @@
             animation: slideIn 0.4s ease-out;
         }
         
-        /* Professional blue background */
-        .bg-professional-blue {
-            background: #2563eb;
-        }
-        
         /* Job card transitions */
         .job-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .job-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+            border-color: var(--color-golden);
         }
         .job-card.selected {
-            background: #dbeafe;
-            border-color: #2563eb !important;
+            background: var(--color-light-golden);
+            border-color: var(--color-golden) !important;
+            box-shadow: 0 0 0 2px var(--color-golden);
         }
 
         /* Button animations */
@@ -67,8 +93,9 @@
             transition: all 0.3s ease;
         }
         .btn-primary:not(:disabled):hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
+            background-color: var(--color-golden-dark);
         }
         .btn-primary:not(:disabled):active {
             transform: translateY(0);
@@ -80,8 +107,8 @@
         }
         .candidate-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            border-color: #2563eb;
+            box-shadow: 0 8px 16px rgba(212, 175, 55, 0.15);
+            border-color: var(--color-golden);
         }
 
         /* Loading animation */
@@ -90,35 +117,39 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+<body class="bg-cream min-h-screen">
     <!-- Header -->
-    <header class="bg-white border-b border-gray-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <header class="bg-white border-b-2 border-golden shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-professional-blue rounded-lg flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-12 h-12 bg-black rounded-sm flex items-center justify-center">
+                        <svg class="w-7 h-7 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                         </svg>
                     </div>
-                    <h1 class="text-2xl font-semibold text-blue-600">HR Recruitment Portal</h1>
+                    <div>
+                        <h1 class="text-2xl font-bold text-black">HR Recruitment Portal</h1>
+                        <p class="text-xs text-gray-600">TalentHub Administration</p>
+                    </div>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span class="text-sm text-gray-600 font-medium">AI-Powered Shortlisting</span>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <!-- Job Selection and Description Section - Split View -->
-        <section class="flex gap-6 mb-6 animate-fade-in" style="height: 85vh;">
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2 px-4 py-2 bg-light-golden rounded-sm border border-golden">
+                        <div class="w-2 h-2 bg-golden rounded-full animate-pulse"></div>
+                        <span class="text-sm text-black font-semibold">AI-Powered</span>
+                    </div>
+                    <a href="/" class="px-4 py-2 bg-transparent border border-black text-black font-semibold rounded-sm hover:bg-black hover:text-golden transition-all duration-300">
+                        Back to Home
+                    </a>8 animate-fade-in" style="height: 85vh;">
             <!-- Left Side - Job Selection -->
-            <div class="w-1/2 bg-white rounded-xl shadow-lg border border-gray-200 p-6 flex flex-col backdrop-blur-sm bg-white/90">
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="w-1 h-6 bg-professional-blue rounded-full"></div>
-                    <h3 class="text-sm font-semibold text-gray-700">Select Job Position</h3>
+            <div class="w-1/2 bg-white rounded-sm shadow-md border-2 border-gray-200 p-6 flex flex-col">
+                <div class="flex items-center gap-3 mb-5 pb-4 border-b-2 border-golden">
+                    <div class="w-8 h-8 bg-golden rounded-sm flex items-center justify-center">
+                        <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-black">Select Job Position</h3>
                 </div>
                 <div id="jobListContainer" class="flex-1 overflow-y-auto space-y-3 pr-2">
                     <div class="text-center text-gray-500 py-8 loading-pulse">Loading jobs...</div>
@@ -126,44 +157,60 @@
                 <button 
                     id="shortlistBtn" 
                     disabled
-                    class="btn-primary mt-4 px-6 py-2.5 bg-professional-blue text-white text-sm font-medium rounded-lg hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none disabled:bg-gray-300"
+                    class="btn-primary mt-5 px-8 py-3 bg-golden text-black text-sm font-bold rounded-sm focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:transform-none disabled:bg-gray-300"
                 >
                     <span class="flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
-                        Analyze & Shortlist
+                        Analyze & Shortlist Candidates
                     </span>
                 </button>
             </div>
 
             <!-- Right Side - Job Description -->
-            <div class="w-1/2 bg-white rounded-xl shadow-lg border border-gray-200 p-6 flex flex-col backdrop-blur-sm bg-white/90">
-                <div class="flex items-center gap-2 mb-3">
-                    <div class="w-1 h-6 bg-professional-blue rounded-full"></div>
-                    <label for="jobDescription" class="block text-sm font-semibold text-gray-700">
+            <div class="w-1/2 bg-white rounded-sm shadow-md border-2 border-gray-200 p-6 flex flex-col">
+                <div class="flex items-center gap-3 mb-5 pb-4 border-b-2 border-golden">
+                    <div class="w-8 h-8 bg-golden rounded-sm flex items-center justify-center">
+                        <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <label for="jobDescription" class="block text-lg font-bold text-black">
                         Job Description
                     </label>
                 </div>
                 <textarea 
                     id="jobDescription" 
-                    class="flex-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm resize-none transition-all duration-200 bg-gray-50"
-                    placeholder="Select a job to view description..."
-                    readonly
-                ></textarea>
-            </div>
-        </section>
-
-        <!-- Results Section -->
-        <section id="resultsSection" class="hidden mb-6 animate-slide-in">
-            <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-6 backdrop-blur-sm bg-white/90">
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="w-8 h-8 bg-professional-blue rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    class="flex-1 w-full px-4 py-4 bor8 animate-slide-in">
+            <div class="bg-white rounded-sm shadow-md border-2 border-golden p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 bg-golden rounded-sm flex items-center justify-center">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
-                    <h2 class="text-lg font-semibold text-gray-900">Shortlisted Candidates</h2>
+                    <h2 class="text-2xl font-bold text-black">Shortlisted Candidates</h2>
+                </div>
+                <div id="shortlistedCandidates" class="space-y-4"></div>
+            </div>
+        </section>
+
+        <!-- All Candidates Section -->
+        <section class="animate-fade-in">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-black rounded-sm flex items-center justify-center">
+                        <svg class="w-5 h-5 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-black">All Candidates</h2>
+                </div>
+                <span id="candidateCount" class="text-sm font-bold text-black px-5 py-2 bg-light-golden rounded-sm shadow-sm border border-golden">Loading...</span>
+            </div>
+
+            <div id="candidatesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6
                 </div>
                 <div id="shortlistedCandidates" class="space-y-4"></div>
             </div>

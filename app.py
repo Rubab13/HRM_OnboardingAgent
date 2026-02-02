@@ -49,9 +49,19 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 @app.get("/")
+async def landing_page(request: Request):
+    """Serve the landing page"""
+    return templates.TemplateResponse("landing.html", {"request": request})
+
+@app.get("/hr-portal")
 async def hr_dashboard(request: Request):
     """Serve the HR dashboard"""
     return templates.TemplateResponse("hr_dashboard.html", {"request": request})
+
+@app.get("/apply")
+async def apply_page(request: Request):
+    """Serve the application page"""
+    return templates.TemplateResponse("apply.html", {"request": request})
 
 @app.get("/api/health")
 async def health():
