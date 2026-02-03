@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TalentHub - Find Your Dream Job</title>
+    <title>TalentHub - AI-Powered Recruitment</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @keyframes fadeInUp {
@@ -22,31 +22,79 @@
             to { opacity: 1; }
         }
         
-        @keyframes slideIn {
+        @keyframes slideInLeft {
             from { 
                 opacity: 0; 
-                transform: translateX(-30px); 
+                transform: translateX(-50px); 
             }
             to { 
                 opacity: 1; 
                 transform: translateX(0); 
             }
         }
+
+        @keyframes slideInRight {
+            from { 
+                opacity: 0; 
+                transform: translateX(50px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0); 
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
         
         .animate-fade-in-up {
-            animation: fadeInUp 1s ease-out;
+            animation: fadeInUp 0.8s ease-out;
         }
         
         .animate-fade-in {
             animation: fadeIn 1s ease-out;
         }
         
-        .animate-slide-in {
-            animation: slideIn 0.8s ease-out;
+        .animate-slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        .delay-100 {
+            animation-delay: 0.1s;
+            animation-fill-mode: both;
         }
         
         .delay-200 {
             animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .delay-300 {
+            animation-delay: 0.3s;
             animation-fill-mode: both;
         }
         
@@ -55,6 +103,11 @@
             animation-fill-mode: both;
         }
         
+        .delay-500 {
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
+        }
+
         .delay-600 {
             animation-delay: 0.6s;
             animation-fill-mode: both;
@@ -72,120 +125,237 @@
             border-color: #D4AF37;
         }
         
-        .hover-golden:hover {
-            background-color: #C5A028;
+        .gradient-golden {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
         }
-        
-        body {
-            overflow: hidden;
+
+        .gradient-text {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
         }
-        
-        .hero-section {
-            min-height: 100vh;
-            max-height: 100vh;
+
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            transition: all 0.3s ease;
+            position: relative;
             overflow: hidden;
         }
 
-        .hero-image {
-            object-fit: cover;
-            height: 100%;
+        .btn-secondary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-secondary:hover:before {
+            left: 100%;
+        }
+
+        .btn-secondary:hover {
+            border-color: #D4AF37;
+            color: #D4AF37;
+        }
+
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .stat-number {
+            font-weight: 700;
+            font-size: 2.5rem;
+        }
+
+        body {
+            overflow-x: hidden;
         }
     </style>
 </head>
 <body class="bg-white antialiased font-sans">
-    <!-- Hero Section -->
-    <div class="hero-section flex">
-        <!-- Left Side - Content -->
-        <div class="w-1/2 flex flex-col justify-between p-12 lg:p-16 bg-white">
-            <!-- Header -->
-            <div class="animate-fade-in">
-                <a href="/" class="inline-flex items-center gap-2">
-                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none">
-                        <path d="M3 3h18v18H3V3z" fill="#D4AF37"/>
-                        <path d="M7 12h10M12 7v10" stroke="white" stroke-width="2"/>
-                    </svg>
-                    <span class="text-xl font-bold text-black">TalentHub</span>
-                </a>
-            </div>
-
-            <!-- Main Content -->
-            <div class="animate-slide-in space-y-8">
-                <div>
-                    <h1 class="text-5xl lg:text-6xl font-bold text-black mb-4 leading-tight">
-                        Find The World's<br>
-                        Top <span class="text-golden">Talent</span>
-                    </h1>
-                    
-                    <p class="text-lg text-gray-600 leading-relaxed">
-                        Great Execution, Pixel Perfect<br>
-                        Work Delivered by AI —
-                    </p>
-                </div>
-
-                <!-- Testimonial Card -->
-                <div class="flex items-center gap-3 animate-fade-in-up delay-200">
-                    <div class="w-10 h-10 bg-golden rounded-full flex items-center justify-center flex-shrink-0">
-                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-black/95 backdrop-blur-sm shadow-lg z-50 border-b-2 border-golden">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3 animate-slide-in-left">
+                    <div class="w-10 h-10 bg-golden rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
                     </div>
-                    <div>
-                        <p class="text-sm font-semibold text-black">HR Manager</p>
-                        <p class="text-xs text-gray-500">CEO - Founder, TalentHub Inc.</p>
-                    </div>
+                    <span class="text-2xl font-bold text-golden">TalentHub</span>
                 </div>
-
-                <!-- CTA Buttons -->
-                <div class="flex items-center gap-6 animate-fade-in-up delay-400">
-                    <a href="/apply" class="px-7 py-3 bg-black text-white font-semibold rounded hover:bg-gray-800 transition-all duration-300 shadow-sm">
-                        Apply Here — It's Free
-                    </a>
-                    <a href="/hr-portal" class="text-black font-semibold hover:text-golden transition-colors">
+                
+                <div class="flex items-center gap-4 animate-slide-in-right">
+                    <a href="/hr-portal" class="px-5 py-2 text-sm font-semibold text-white hover:text-golden transition-colors">
                         HR Portal
                     </a>
-                </div>
-            </div>
-
-            <!-- Footer Links -->
-            <div class="flex gap-8 text-sm text-gray-500 animate-fade-in delay-600">
-                <a href="#" class="hover:text-black transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-black transition-colors">Terms & Conditions</a>
-            </div>
-        </div>
-
-        <!-- Right Side - Image with Overlay -->
-        <div class="w-1/2 relative overflow-hidden">
-            <!-- Background with actual image -->
-            <img src="/public/hero.jpg" alt="Office Environment" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            
-            <!-- Fallback gradient background -->
-            <div class="absolute inset-0 bg-gradient-to-br from-amber-100 via-amber-50 to-orange-100" style="display: none;">
-                <!-- Decorative circles to simulate office environment -->
-                <div class="absolute top-20 right-20 w-64 h-64 bg-amber-200/30 rounded-full blur-3xl"></div>
-                <div class="absolute bottom-40 left-20 w-80 h-80 bg-orange-200/30 rounded-full blur-3xl"></div>
-            </div>
-            
-            <!-- Overlay for better text readability -->
-            <div class="absolute inset-0 bg-black/10"></div>
-            
-            <!-- Content Overlay -->
-            <div class="relative h-full flex flex-col items-start justify-center p-16 animate-fade-in delay-400">
-                <div class="bg-white/95 backdrop-blur-sm rounded-lg p-8 shadow-xl max-w-sm">
-                    <h2 class="text-3xl font-bold text-black mb-2">
-                        Start Finding<br>
-                        Talent
-                    </h2>
-                    <a href="/apply" class="inline-flex items-center text-black font-semibold hover:text-golden transition-colors mt-4 group">
-                        <span>Apply Now</span>
-                        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
+                    <a href="/apply" class="btn-primary px-6 py-2.5 bg-golden text-black text-sm font-bold rounded-lg">
+                        Apply Now
                     </a>
                 </div>
             </div>
         </div>
-    </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-amber-50/30 pt-20">
+        <!-- Decorative Background Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-20 right-10 w-72 h-72 bg-amber-200/20 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 left-10 w-96 h-96 bg-yellow-200/20 rounded-full blur-3xl animate-float delay-300"></div>
+            <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-golden/10 rounded-full blur-3xl animate-float delay-500"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8">
+                    <!-- Badge -->
+                    <div class="animate-fade-in-up inline-flex items-center gap-2 px-4 py-2 bg-black/5 border border-golden/30 rounded-full">
+                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span class="text-sm font-semibold text-gray-700">AI-Powered Recruitment System</span>
+                    </div>
+
+                    <!-- Main Heading -->
+                    <h1 class="text-6xl lg:text-7xl font-extrabold leading-tight animate-slide-in-left delay-100">
+                        Discover The
+                        <span class="gradient-text block">Perfect Match</span>
+                        For Every Role
+                    </h1>
+
+                    <!-- Subheading -->
+                    <p class="text-xl text-gray-600 leading-relaxed animate-fade-in-up delay-200">
+                        Revolutionize your hiring process with AI-driven candidate evaluation. 
+                        Find top talent faster, smarter, and more efficiently than ever before.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 animate-fade-in-up delay-300">
+                        <a href="/apply" class="btn-primary px-8 py-4 bg-golden text-black text-base font-bold rounded-xl shadow-lg">
+                            <span class="flex items-center gap-2">
+                                Apply for Position
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </span>
+                        </a>
+                        <a href="/hr-portal" class="btn-secondary px-8 py-4 bg-transparent border-2 border-gray-300 text-gray-700 text-base font-bold rounded-xl">
+                            HR Dashboard
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 pt-8 animate-fade-in-up delay-400">
+                        <div class="text-center">
+                            <div class="stat-number text-golden">AI</div>
+                            <p class="text-sm text-gray-600 font-medium">Powered Analysis</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="stat-number text-golden">100%</div>
+                            <p class="text-sm text-gray-600 font-medium">Automated</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="stat-number text-golden">Fast</div>
+                            <p class="text-sm text-gray-600 font-medium">Processing</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content - Feature Cards -->
+                <div class="space-y-6 animate-slide-in-right delay-200">
+                    <!-- Feature Card 1 -->
+                    <div class="feature-card bg-white rounded-2xl p-8 shadow-xl border border-gray-100 animate-pulse-glow">
+                        <div class="flex items-start gap-4">
+                            <div class="w-14 h-14 bg-golden rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Smart Candidate Screening</h3>
+                                <p class="text-gray-600">AI analyzes resumes and ranks candidates based on job requirements automatically.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature Card 2 -->
+                    <div class="feature-card bg-white rounded-2xl p-8 shadow-xl border border-gray-100 delay-200">
+                        <div class="flex items-start gap-4">
+                            <div class="w-14 h-14 bg-black rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-8 h-8 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Instant Shortlisting</h3>
+                                <p class="text-gray-600">Get qualified candidates shortlisted in seconds, not days. Save time and resources.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature Card 3 -->
+                    <div class="feature-card bg-gradient-to-br from-golden to-yellow-500 rounded-2xl p-8 shadow-xl delay-300">
+                        <div class="flex items-start gap-4">
+                            <div class="w-14 h-14 bg-black rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-8 h-8 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-black mb-2">Detailed Evaluation Reports</h3>
+                                <p class="text-black/80">Comprehensive candidate assessments with strengths, weaknesses, and recommendations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t-2 border-golden py-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-golden rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <span class="text-lg font-bold text-golden">TalentHub</span>
+                </div>
+                
+                <div class="flex gap-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-golden transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-golden transition-colors">Terms & Conditions</a>
+                    <a href="#" class="hover:text-golden transition-colors">Contact</a>
+                </div>
+                
+                <p class="text-sm text-gray-500">© 2026 TalentHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
