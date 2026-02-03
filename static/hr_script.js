@@ -2,6 +2,7 @@
 let allCandidates = [];
 let allJobs = [];
 let selectedJobId = null;
+let selectedCandidatesForEmail = new Set();
 
 // Load jobs and setup on page load
 document.addEventListener('DOMContentLoaded', () => {
@@ -288,19 +289,31 @@ function displayShortlistedCandidates(candidates) {
     
     if (!candidates || candidates.length === 0) {
         container.innerHTML = '<p class="text-gray-500 text-center py-4">No candidates meet the minimum requirements.</p>';
+        updateEmailButtonVisibility();
         return;
     }
+    
+    // Clear selected candidates when new shortlist is displayed
+    selectedCandidatesForEmail.clear();
+    updateEmailButtonVisibility();
     
     container.innerHTML = candidates.map((candidate, index) => {
         // Use candidate_name directly from the response
         const fullName = candidate.candidate_name || 'Unknown';
         const email = candidate.email || 'N/A';
         const phone = candidate.phone || 'N/A';
+        const candidateId = `${fullName}_${email}`.replace(/\s+/g, '_');
         
         return `
             <div class="border border-gray-200 rounded-lg p-5 hover:border-yellow-500 transition-colors animate-fade-in" style="animation-delay: ${index * 0.1}s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-3">
+                        <input 
+                            type="checkbox" 
+                            id="candidate_${candidateId}"
+                            class="w-5 h-5 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 cursor-pointer"
+                            onchange="toggleCandidateSelection('${candidateId}', '${fullName.replace(/'/g, "\\'").replace(/"/g, '&quot;')}', '${email}')"
+                        />
                         <div class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold">
                             ${index + 1}
                         </div>
@@ -343,4 +356,41 @@ function displayShortlistedCandidates(candidates) {
             </div>
         `;
     }).join('');
+}
+
+function toggleCandidateSelection(candidateId, name, email) {
+    const checkbox = document.getElementById(`candidate_${candidateId}`);
+    
+    if (checkbox.checked) {
+        selectedCandidatesForEmail.add(JSON.stringify({ id: candidateId, name, email }));
+    } else {
+        selectedCandidatesForEmail.delete(JSON.stringify({ id: candidateId, name, email }));
+    }
+    
+    updateEmailButtonVisibility();
+}
+
+function updateEmailButtonVisibility() {
+    const sendEmailBtn = document.getElementById('sendEmailBtn');
+    const selectedCount = document.getElementById('selectedCount');
+    
+    if (selectedCandidatesForEmail.size > 0) {
+        sendEmailBtn.classList.remove('hidden');
+        selectedCount.textContent = selectedCandidatesForEmail.size;
+    } else {
+        sendEmailBtn.classList.add('hidden');
+    }
+}
+
+function goToSendEmail() {
+    if (selectedCandidatesForEmail.size === 0) return;
+    
+    // Convert Set to Array
+    const candidates = Array.from(selectedCandidatesForEmail).map(c => JSON.parse(c));
+    
+    // Store in sessionStorage
+    sessionStorage.setItem('selectedCandidates', JSON.stringify(candidates));
+    
+    // Navigate to send email page
+    window.location.href = '/hr-send-email';
 }

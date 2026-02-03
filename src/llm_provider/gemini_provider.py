@@ -17,26 +17,11 @@ class GeminiProvider:
         
         self.client = genai.Client(api_key=self.api_key)
     
-    def generate_response(self, prompt: str, temperature: float = 0.7) -> str:
-        """Generate response from Gemini"""
-        try:
-            response = self.client.models.generate_content(
-                model='models/gemini-2.5-flash',
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    temperature=temperature,
-                    max_output_tokens=2048,
-                )
-            )
-            return response.text
-        except Exception as e:
-            raise Exception(f"Error generating response: {str(e)}")
-    
     def generate_json_response(self, prompt: str) -> str:
         """Generate JSON formatted response"""
         try:
             response = self.client.models.generate_content(
-                model='models/gemini-2.5-flash-lite',
+                model='models/gemini-2.5-flash',
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     temperature=0.3,

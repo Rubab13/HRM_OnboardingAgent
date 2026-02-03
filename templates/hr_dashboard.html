@@ -173,13 +173,27 @@
         <!-- Results Section -->
         <section id="resultsSection" class="hidden mb-6 animate-slide-in">
             <div class="bg-white rounded-xl shadow-lg border border-gray-300 p-6 backdrop-blur-sm bg-white/90">
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="w-8 h-8 bg-professional-blue rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-professional-blue rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-lg font-semibold text-gray-900">Shortlisted Candidates</h2>
                     </div>
-                    <h2 class="text-lg font-semibold text-gray-900">Shortlisted Candidates</h2>
+                    <button 
+                        id="sendEmailBtn"
+                        onclick="goToSendEmail()"
+                        class="hidden btn-primary px-4 py-2 bg-professional-blue text-black text-sm font-semibold rounded-lg hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                    >
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            Send Email (<span id="selectedCount">0</span>)
+                        </span>
+                    </button>
                 </div>
                 <div id="shortlistedCandidates" class="space-y-4"></div>
             </div>

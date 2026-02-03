@@ -46,6 +46,12 @@ class ShortlistRequest(BaseModel):
 class CreateJobRequest(BaseModel):
     job_description: str
 
+# Request model for sending bulk email
+class BulkEmailRequest(BaseModel):
+    recipients: list
+    subject: str
+    body: str
+
 app = FastAPI()
 
 # Mount static files directory
@@ -69,6 +75,11 @@ async def hr_dashboard(request: Request):
 async def hr_job_upload(request: Request):
     """Serve the HR job upload page"""
     return templates.TemplateResponse("hr_job_upload.html", {"request": request})
+
+@app.get("/hr-send-email")
+async def hr_send_email(request: Request):
+    """Serve the HR send email page"""
+    return templates.TemplateResponse("hr_send_email.html", {"request": request})
 
 @app.get("/apply")
 async def apply_page(request: Request):
@@ -421,6 +432,87 @@ async def shortlist_candidates(request: ShortlistRequest):
             content={
                 "success": False,
                 "error": str(e)
+            }
+        )
+
+@app.post("/api/send-bulk-email")
+async def send_bulk_email(request: BulkEmailRequest):
+    """
+    Send bulk emails to selected candidates
+    Note: This is a mock implementation. In production, integrate with an email service like SendGrid, AWS SES, or SMTP.
+    """
+    try:
+        recipients = request.recipients
+        subject = request.subject
+        body = request.body
+        
+        if not recipients or len(recipients) == 0:
+            return JSONResponse(
+                status_code=400,
+                content={
+                    "success": False,
+                    "error": "No recipients specified"
+                }
+            )
+        
+        if not subject or not body:
+            return JSONResponse(
+                status_code=400,
+                content={
+                    "success": False,
+                    "error": "Subject and body are required"
+                }
+            )
+        
+        # Mock email sending (in production, use actual email service)
+        print(f"\n📧 Sending emails to {len(recipients)} candidates...")
+        print(f"Subject: {subject}")
+        print(f"Body preview: {body[:100]}...")
+        
+        sent_count = 0
+        failed_emails = []
+        
+        for recipient in recipients:
+            try:
+                name = recipient.get('name', 'Unknown')
+                email = recipient.get('email', 'N/A')
+                
+                # Personalize the email body by replacing placeholder if exists
+                personalized_body = body.replace('[Candidate Name]', name)
+                
+                # Mock sending (log to console)
+                print(f"  ✉️  Sending to: {name} <{email}>")
+                
+                # In production, replace this with actual email sending:
+                # await send_email_via_service(email, subject, personalized_body)
+                
+                sent_count += 1
+                
+            except Exception as e:
+                print(f"  ❌ Failed to send to {email}: {str(e)}")
+                failed_emails.append(email)
+        
+        print(f"✅ Email sending complete. Sent: {sent_count}, Failed: {len(failed_emails)}")
+        
+        response_data = {
+            "success": True,
+            "sent_count": sent_count,
+            "failed_count": len(failed_emails),
+            "message": f"Successfully sent emails to {sent_count} candidate(s)"
+        }
+        
+        if failed_emails:
+            response_data["failed_emails"] = failed_emails
+        
+        return JSONResponse(content=response_data)
+        
+    except Exception as e:
+        print(f"❌ Error sending bulk emails: {str(e)}")
+        return JSONResponse(
+            status_code=500,
+            content={
+                "success": False,
+                "error": f"Failed to send emails: {str(e)}"
             }
         )
 
