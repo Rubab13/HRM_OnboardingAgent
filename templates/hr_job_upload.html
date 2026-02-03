@@ -45,9 +45,19 @@
             background: #D4AF37;
             border-radius: 10px;
         }
+
+        body {
+            overflow: hidden;
+        }
+
+        .content-container {
+            height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+        }
     </style>
 </head>
-<body class="bg-white min-h-screen">
+<body class="bg-white h-screen"
     <!-- Header -->
     <header class="bg-black shadow-lg" style="border-bottom: 2px solid #D4AF37;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -76,63 +86,84 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="animate-fade-in">
-            <div class="bg-white rounded-xl shadow-lg border border-gray-300 p-8">
-                <!-- Header Section -->
-                <div class="mb-6">
-                    <div class="flex items-center gap-2 mb-2">
-                        <div class="w-1 h-6 bg-professional-blue rounded-full"></div>
-                        <h2 class="text-xl font-bold text-gray-900">Create New Job Posting</h2>
-                    </div>
-                    <p class="text-sm text-gray-600 ml-4">
-                        Paste the complete job description below and click Post to add it to the system.
-                    </p>
-                </div>
+    <main class="content-container">
+        <div class="max-w-7xl mx-auto px-8 w-full">
+            <div class="animate-fade-in">
+                <div class="bg-white rounded-xl shadow-lg border border-gray-300 p-8">
+                    <div class="grid grid-cols-12 gap-8">
+                        <!-- Left Section - Info -->
+                        <div class="col-span-4 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-1 h-8 bg-professional-blue rounded-full"></div>
+                                    <h2 class="text-2xl font-bold text-gray-900">Create New Job</h2>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                                    Paste the complete job description in the textarea and click Post to add it to the recruitment system.
+                                </p>
+                                
+                                <!-- Success/Error Message -->
+                                <div id="messageContainer" class="hidden mb-4"></div>
 
-                <!-- Success/Error Message -->
-                <div id="messageContainer" class="hidden mb-4"></div>
+                                <!-- Info Box -->
+                                <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+                                    <div class="flex items-start gap-3">
+                                        <svg class="w-5 h-5 text-professional-blue flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <div class="text-xs text-gray-700">
+                                            <p class="font-semibold mb-1">Quick Tip</p>
+                                            <p>Press Ctrl+Enter to quickly post the job. The job will be automatically assigned the next available Job ID.</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                <!-- Job Description Form -->
-                <div class="space-y-4">
-                    <div>
-                        <label for="jobDescriptionTextarea" class="block text-sm font-semibold text-gray-900 mb-2">
-                            Job Description
-                        </label>
-                        <textarea 
-                            id="jobDescriptionTextarea"
-                            rows="20"
-                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-professional-blue focus:ring-2 focus:ring-yellow-100 focus:outline-none resize-none text-sm text-gray-800 font-mono leading-relaxed transition-all"
-                            placeholder="Paste the complete job description here...&#10;&#10;Example:&#10;Position: Senior Software Engineer&#10;Department: Engineering&#10;Location: Remote&#10;&#10;Job Description:&#10;We are looking for an experienced software engineer..."
-                        ></textarea>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-xs text-gray-500">
-                                <span id="charCount">0</span> characters
-                            </span>
-                            <span class="text-xs text-gray-500" id="jobIdPreview"></span>
+                                <div class="space-y-2">
+                                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                        <span id="jobIdPreview" class="font-medium"></span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                                        <div class="w-2 h-2 bg-professional-blue rounded-full"></div>
+                                        <span><span id="charCount">0</span> characters</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="space-y-3 mt-8">
+                                <button 
+                                    id="postJobBtn"
+                                    onclick="postJob()"
+                                    class="btn-primary w-full px-6 py-3 bg-professional-blue text-black text-sm font-semibold rounded-lg hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    <span class="flex items-center justify-center gap-2">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span id="postBtnText">Post Job</span>
+                                    </span>
+                                </button>
+                                <button 
+                                    onclick="window.location.href='/hr-portal'"
+                                    class="w-full px-6 py-3 bg-gray-100 text-gray-700 text-sm font-semibold rounded-lg hover:bg-gray-200 transition-all"
+                                >
+                                    Cancel
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Action Buttons -->
-                    <div class="flex gap-3 pt-2">
-                        <button 
-                            id="postJobBtn"
-                            onclick="postJob()"
-                            class="btn-primary flex-1 px-6 py-3 bg-professional-blue text-black text-sm font-semibold rounded-lg hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            <span class="flex items-center justify-center gap-2">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                <span id="postBtnText">Post Job</span>
-                            </span>
-                        </button>
-                        <button 
-                            onclick="window.location.href='/hr-portal'"
-                            class="px-6 py-3 bg-gray-100 text-gray-700 text-sm font-semibold rounded-lg hover:bg-gray-200 transition-all"
-                        >
-                            Cancel
-                        </button>
+                        <!-- Right Section - Textarea -->
+                        <div class="col-span-8">
+                            <label for="jobDescriptionTextarea" class="block text-sm font-semibold text-gray-900 mb-3">
+                                Job Description
+                            </label>
+                            <textarea 
+                                id="jobDescriptionTextarea"
+                                class="w-full h-[calc(100vh-280px)] px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-professional-blue focus:ring-2 focus:ring-yellow-100 focus:outline-none resize-none text-sm text-gray-800 font-mono leading-relaxed transition-all"
+                                placeholder="Paste the complete job description here...&#10;&#10;Example:&#10;Position: Senior Software Engineer&#10;Department: Engineering&#10;Location: Remote&#10;&#10;Job Description:&#10;We are looking for an experienced software engineer..."
+                            ></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
