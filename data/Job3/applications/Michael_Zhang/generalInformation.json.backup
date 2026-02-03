@@ -21,10 +21,7 @@
       "startDate": "2017-09",
       "endDate": "2019-06",
       "gpa": 3.9,
-      "honors": [
-        "Dean's List",
-        "AI Research Award"
-      ]
+      "honors": ["Dean's List", "AI Research Award"]
     },
     {
       "degree": "Bachelor of Science",
@@ -33,9 +30,7 @@
       "startDate": "2012-09",
       "endDate": "2016-05",
       "gpa": 3.7,
-      "honors": [
-        "Dean's List"
-      ]
+      "honors": ["Dean's List"]
     }
   ],
   "experience": [
@@ -55,42 +50,12 @@
     }
   ],
   "skills": {
-    "programming": [
-      "Python",
-      "SQL",
-      "JavaScript"
-    ],
-    "frameworks": [
-      "LangChain",
-      "LlamaIndex",
-      "PyTorch",
-      "TensorFlow",
-      "Transformers",
-      "FastAPI",
-      "Flask"
-    ],
-    "tools": [
-      "OpenAI API",
-      "Anthropic Claude",
-      "Google Gemini",
-      "Pinecone",
-      "Weaviate",
-      "ChromaDB",
-      "Jupyter",
-      "Docker"
-    ],
-    "cloud": [
-      "AWS",
-      "GCP",
-      "Azure"
-    ],
-    "databases": [
-      "PostgreSQL",
-      "MongoDB",
-      "Redis",
-      "Elasticsearch"
-    ],
-    "testing": []
+    "programming": ["Python", "SQL", "JavaScript"],
+    "frameworks": ["LangChain", "LlamaIndex", "PyTorch", "TensorFlow", "Transformers", "FastAPI", "Flask"],
+    "tools": ["OpenAI API", "Anthropic Claude", "Google Gemini", "Pinecone", "Weaviate", "ChromaDB", "Jupyter", "Docker"],
+    "cloud": ["AWS", "GCP", "Azure"],
+    "databases": ["PostgreSQL", "MongoDB", "Redis", "Elasticsearch"],
+    "specialties": ["RAG Architecture", "Vector Databases", "Embeddings", "Prompt Engineering", "LLM Integration", "Semantic Search"]
   },
   "certifications": [
     "AWS Certified Machine Learning - Specialty",

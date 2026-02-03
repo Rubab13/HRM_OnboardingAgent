@@ -22,10 +22,7 @@
       "startDate": "2019-09",
       "endDate": "2023-05",
       "gpa": 3.65,
-      "honors": [
-        "Dean's List",
-        "Best Infrastructure Project Award"
-      ]
+      "honors": ["Dean's List", "Best Infrastructure Project Award"]
     }
   ],
   "experience": [
@@ -52,52 +49,30 @@
     }
   ],
   "skills": {
-    "programming": [],
-    "frameworks": [],
-    "tools": [
-      "Linux (Ubuntu, CentOS, RHEL)",
-      "Windows Server",
-      "VMware vSphere",
-      "Hyper-V",
-      "VirtualBox",
-      "SAN",
-      "NAS",
-      "RAID configurations",
-      "Veeam",
-      "Bacula",
-      "rsync",
-      "TCP/IP",
-      "DNS",
-      "DHCP",
-      "VPN",
-      "Firewalls",
-      "Cisco routers",
-      "switches",
-      "pfSense",
-      "HTTP/HTTPS",
-      "SSH",
-      "FTP",
-      "SMTP",
-      "Bash",
-      "Python",
-      "PowerShell",
-      "Ansible (learning)",
-      "Docker (basic)",
-      "Nagios",
-      "Zabbix",
-      "PRTG",
-      "MySQL",
-      "PostgreSQL",
-      "Git",
-      "GitHub"
-    ],
-    "cloud": [
-      "AWS (beginner level)",
-      "EC2",
-      "S3"
-    ],
-    "databases": [],
-    "testing": []
+    "systems": {
+      "operatingSystems": ["Linux (Ubuntu, CentOS, RHEL)", "Windows Server"],
+      "virtualization": ["VMware vSphere", "Hyper-V", "VirtualBox"],
+      "storage": ["SAN", "NAS", "RAID configurations"],
+      "backup": ["Veeam", "Bacula", "rsync"]
+    },
+    "networking": {
+      "fundamentals": ["TCP/IP", "DNS", "DHCP", "VPN", "Firewalls"],
+      "tools": ["Cisco routers", "switches", "pfSense"],
+      "protocols": ["HTTP/HTTPS", "SSH", "FTP", "SMTP"]
+    },
+    "cloud": {
+      "platforms": ["AWS (beginner level)"],
+      "services": ["EC2", "S3"],
+      "experience": "Basic cloud knowledge, primarily on-premise experience"
+    },
+    "automation": {
+      "scripting": ["Bash", "Python", "PowerShell"],
+      "tools": ["Ansible (learning)"],
+      "containers": ["Docker (basic)"]
+    },
+    "monitoring": ["Nagios", "Zabbix", "PRTG"],
+    "databases": ["MySQL", "PostgreSQL"],
+    "versionControl": ["Git", "GitHub"]
   },
   "certifications": [
     "CompTIA Linux+",
@@ -112,5 +87,10 @@
     "Migrated company email system to new infrastructure with zero downtime",
     "Implemented automated backup solution for 100+ servers",
     "Set up monitoring infrastructure using Nagios for critical systems"
-  ]
+  ],
+  "additionalInfo": {
+    "remoteWorkExperience": true,
+    "availableToStart": "2 weeks notice",
+    "willingToRelocate": false
+  }
 }

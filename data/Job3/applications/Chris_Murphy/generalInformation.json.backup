@@ -21,9 +21,7 @@
       "startDate": "2017-09",
       "endDate": "2019-05",
       "gpa": 3.7,
-      "honors": [
-        "Dean's List"
-      ]
+      "honors": ["Dean's List"]
     },
     {
       "degree": "Bachelor of Science",
@@ -32,9 +30,7 @@
       "startDate": "2013-09",
       "endDate": "2017-05",
       "gpa": 3.6,
-      "honors": [
-        "Dean's List"
-      ]
+      "honors": ["Dean's List"]
     }
   ],
   "experience": [
@@ -54,35 +50,11 @@
     }
   ],
   "skills": {
-    "programming": [
-      "Python",
-      "R",
-      "SQL"
-    ],
-    "frameworks": [
-      "PyTorch",
-      "TensorFlow",
-      "Scikit-learn",
-      "XGBoost",
-      "Keras"
-    ],
-    "tools": [
-      "Jupyter",
-      "MLflow",
-      "Docker",
-      "Git",
-      "Pandas",
-      "NumPy"
-    ],
-    "cloud": [
-      "AWS SageMaker",
-      "Azure ML"
-    ],
-    "databases": [
-      "PostgreSQL",
-      "MongoDB"
-    ],
-    "testing": []
+    "programming": ["Python", "R", "SQL"],
+    "frameworks": ["PyTorch", "TensorFlow", "Scikit-learn", "XGBoost", "Keras"],
+    "tools": ["Jupyter", "MLflow", "Docker", "Git", "Pandas", "NumPy"],
+    "cloud": ["AWS SageMaker", "Azure ML"],
+    "databases": ["PostgreSQL", "MongoDB"]
   },
   "certifications": [
     "AWS Certified Machine Learning - Specialty",

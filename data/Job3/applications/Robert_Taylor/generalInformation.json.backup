@@ -21,9 +21,7 @@
       "startDate": "2016-09",
       "endDate": "2018-05",
       "gpa": 3.6,
-      "honors": [
-        "NLP Research Award"
-      ]
+      "honors": ["NLP Research Award"]
     },
     {
       "degree": "Bachelor of Science",
@@ -52,37 +50,11 @@
     }
   ],
   "skills": {
-    "programming": [
-      "Python",
-      "Java",
-      "SQL"
-    ],
-    "frameworks": [
-      "Transformers",
-      "spaCy",
-      "NLTK",
-      "TensorFlow",
-      "PyTorch",
-      "Hugging Face"
-    ],
-    "tools": [
-      "Jupyter",
-      "Git",
-      "Docker",
-      "OpenAI API",
-      "BERT",
-      "GPT"
-    ],
-    "cloud": [
-      "AWS",
-      "GCP"
-    ],
-    "databases": [
-      "Elasticsearch",
-      "PostgreSQL",
-      "MongoDB"
-    ],
-    "testing": []
+    "programming": ["Python", "Java", "SQL"],
+    "frameworks": ["Transformers", "spaCy", "NLTK", "TensorFlow", "PyTorch", "Hugging Face"],
+    "tools": ["Jupyter", "Git", "Docker", "OpenAI API", "BERT", "GPT"],
+    "cloud": ["AWS", "GCP"],
+    "databases": ["Elasticsearch", "PostgreSQL", "MongoDB"]
   },
   "certifications": [
     "Natural Language Processing Specialization (DeepLearning.AI)",

@@ -22,10 +22,7 @@
       "startDate": "2018-09",
       "endDate": "2022-06",
       "gpa": 3.78,
-      "honors": [
-        "Dean's List",
-        "Computer Science Achievement Award"
-      ]
+      "honors": ["Dean's List", "Computer Science Achievement Award"]
     }
   ],
   "experience": [
@@ -52,46 +49,27 @@
     }
   ],
   "skills": {
-    "programming": [
-      "Python",
-      "Bash",
-      "PowerShell",
-      "Infrastructure Automation",
-      "Monitoring Scripts"
-    ],
-    "frameworks": [],
-    "tools": [
-      "Linux (Ubuntu, CentOS)",
-      "Windows Server",
-      "Ansible",
-      "Chef",
-      "Python",
-      "Bash",
-      "Prometheus",
-      "Grafana",
-      "Nagios",
-      "Zabbix",
-      "Jenkins",
-      "GitLab CI",
-      "GitHub Actions",
-      "PostgreSQL",
-      "MySQL",
-      "Redis",
-      "Git",
-      "GitHub",
-      "GitLab"
-    ],
-    "cloud": [
-      "AWS (basic)",
-      "Azure (learning)",
-      "EC2",
-      "S3",
-      "CloudWatch",
-      "Docker",
-      "Docker Compose"
-    ],
-    "databases": [],
-    "testing": []
+    "infrastructure": {
+      "servers": ["Linux (Ubuntu, CentOS)", "Windows Server"],
+      "automation": ["Ansible", "Chef", "Python", "Bash"],
+      "monitoring": ["Prometheus", "Grafana", "Nagios", "Zabbix"],
+      "cicd": ["Jenkins", "GitLab CI", "GitHub Actions"]
+    },
+    "cloud": {
+      "platforms": ["AWS (basic)", "Azure (learning)"],
+      "services": ["EC2", "S3", "CloudWatch"],
+      "experience": "Limited cloud experience, primarily on-premise infrastructure"
+    },
+    "containers": {
+      "tools": ["Docker", "Docker Compose"],
+      "orchestration": "Basic Kubernetes knowledge"
+    },
+    "scripting": {
+      "languages": ["Python", "Bash", "PowerShell"],
+      "automation": ["Infrastructure Automation", "Monitoring Scripts"]
+    },
+    "databases": ["PostgreSQL", "MySQL", "Redis"],
+    "versionControl": ["Git", "GitHub", "GitLab"]
   },
   "certifications": [
     "Linux Professional Institute Certification (LPIC-1)",
@@ -105,5 +83,10 @@
     "Implemented monitoring stack using Prometheus and Grafana for 50+ servers",
     "Automated deployment processes reducing deployment time by 40%",
     "Developed incident response playbooks and runbooks"
-  ]
+  ],
+  "additionalInfo": {
+    "remoteWorkExperience": true,
+    "availableToStart": "1 month notice",
+    "willingToRelocate": false
+  }
 }

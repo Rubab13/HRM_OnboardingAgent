@@ -22,10 +22,7 @@
       "startDate": "2017-09",
       "endDate": "2021-06",
       "gpa": 3.72,
-      "honors": [
-        "Dean's List",
-        "Engineering Society Member"
-      ]
+      "honors": ["Dean's List", "Engineering Society Member"]
     }
   ],
   "experience": [
@@ -52,92 +49,41 @@
     }
   ],
   "skills": {
-    "programming": [
-      "Python",
-      "Bash",
-      "PowerShell",
-      "Infrastructure Automation",
-      "Deployment Scripts",
-      "Monitoring Scripts"
-    ],
-    "frameworks": [],
-    "tools": [
-      "Jenkins",
-      "GitHub Actions",
-      "GitLab CI",
-      "Azure DevOps",
-      "CircleCI",
-      "Continuous Integration",
-      "Continuous Deployment",
-      "Automated Testing",
-      "CloudWatch",
-      "Prometheus",
-      "Grafana",
-      "ELK Stack",
-      "Datadog",
-      "New Relic",
-      "Log Aggregation",
-      "Metrics Collection",
-      "Alert Configuration",
-      "TCP/IP",
-      "DNS",
-      "Load Balancing",
-      "VPN",
-      "Firewalls",
-      "VPC Configuration",
-      "Security Groups",
-      "Network ACLs",
-      "CDN",
-      "IAM",
-      "Encryption at Rest and in Transit",
-      "Security Auditing",
-      "Compliance",
-      "AWS IAM",
-      "Azure AD",
-      "KMS",
-      "Linux (Ubuntu, CentOS, Amazon Linux)",
-      "Windows Server",
-      "Git",
-      "GitHub",
-      "GitLab",
-      "Bitbucket"
-    ],
-    "cloud": [
-      "AWS",
-      "Azure",
-      "GCP",
-      "EC2",
-      "S3",
-      "Lambda",
-      "CloudFront",
-      "RDS",
-      "VPC",
-      "Azure VMs",
-      "Azure Storage",
-      "Azure Functions",
-      "Infrastructure Design",
-      "Cost Optimization",
-      "Security Best Practices",
-      "High Availability Architecture",
-      "Terraform",
-      "CloudFormation",
-      "ARM Templates",
-      "Pulumi",
-      "Infrastructure as Code",
-      "Configuration Management",
-      "State Management",
-      "Docker",
-      "Kubernetes",
-      "EKS",
-      "AKS",
-      "Docker Compose",
-      "Helm",
-      "Kubernetes Deployments",
-      "Service Mesh",
-      "Container Security"
-    ],
-    "databases": [],
-    "testing": []
+    "cloud": {
+      "platforms": ["AWS", "Azure", "GCP"],
+      "services": ["EC2", "S3", "Lambda", "CloudFront", "RDS", "VPC", "Azure VMs", "Azure Storage", "Azure Functions"],
+      "expertise": ["Infrastructure Design", "Cost Optimization", "Security Best Practices", "High Availability Architecture"]
+    },
+    "iac": {
+      "tools": ["Terraform", "CloudFormation", "ARM Templates", "Pulumi"],
+      "practices": ["Infrastructure as Code", "Configuration Management", "State Management"]
+    },
+    "containers": {
+      "tools": ["Docker", "Kubernetes", "EKS", "AKS", "Docker Compose", "Helm"],
+      "orchestration": ["Kubernetes Deployments", "Service Mesh", "Container Security"]
+    },
+    "cicd": {
+      "tools": ["Jenkins", "GitHub Actions", "GitLab CI", "Azure DevOps", "CircleCI"],
+      "practices": ["Continuous Integration", "Continuous Deployment", "Automated Testing"]
+    },
+    "monitoring": {
+      "tools": ["CloudWatch", "Prometheus", "Grafana", "ELK Stack", "Datadog", "New Relic"],
+      "practices": ["Log Aggregation", "Metrics Collection", "Alert Configuration"]
+    },
+    "scripting": {
+      "languages": ["Python", "Bash", "PowerShell"],
+      "automation": ["Infrastructure Automation", "Deployment Scripts", "Monitoring Scripts"]
+    },
+    "networking": {
+      "fundamentals": ["TCP/IP", "DNS", "Load Balancing", "VPN", "Firewalls"],
+      "cloud": ["VPC Configuration", "Security Groups", "Network ACLs", "CDN"]
+    },
+    "security": {
+      "practices": ["IAM", "Encryption at Rest and in Transit", "Security Auditing", "Compliance"],
+      "tools": ["AWS IAM", "Azure AD", "Security Groups", "KMS"]
+    },
+    "operatingSystems": ["Linux (Ubuntu, CentOS, Amazon Linux)", "Windows Server"],
+    "versionControl": ["Git", "GitHub", "GitLab", "Bitbucket"]
   },
   "certifications": [
     "AWS Certified Solutions Architect - Associate",
@@ -154,5 +100,10 @@
     "Migrated legacy infrastructure to AWS using Terraform, reducing costs by 35%",
     "Designed and implemented multi-region Kubernetes cluster with 99.99% uptime",
     "Built comprehensive monitoring solution using Prometheus and Grafana for 50+ microservices"
-  ]
+  ],
+  "additionalInfo": {
+    "remoteWorkExperience": true,
+    "availableToStart": "Immediately",
+    "willingToRelocate": false
+  }
 }
