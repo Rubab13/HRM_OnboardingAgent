@@ -42,6 +42,10 @@ class ShortlistRequest(BaseModel):
     job_id: str
     job_description: str
 
+# Request model for creating job
+class CreateJobRequest(BaseModel):
+    job_description: str
+
 app = FastAPI()
 
 # Mount static files directory
@@ -60,6 +64,11 @@ async def landing_page(request: Request):
 async def hr_dashboard(request: Request):
     """Serve the HR dashboard"""
     return templates.TemplateResponse("hr_dashboard.html", {"request": request})
+
+@app.get("/hr-job-upload")
+async def hr_job_upload(request: Request):
+    """Serve the HR job upload page"""
+    return templates.TemplateResponse("hr_job_upload.html", {"request": request})
 
 @app.get("/apply")
 async def apply_page(request: Request):
@@ -97,6 +106,63 @@ async def get_jobs():
         return JSONResponse(content={"jobs": jobs, "count": len(jobs)})
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": str(e)})
+
+@app.post("/api/create-job")
+async def create_job(request: CreateJobRequest):
+    """
+    Create a new job folder with job description.
+    Counts existing job folders and creates the next one (e.g., Job4, Job5, etc.)
+    """
+    try:
+        data_dir = "data"
+        
+        # Ensure data directory exists
+        if not os.path.exists(data_dir):
+            os.makedirs(data_dir)
+        
+        # Count existing job folders
+        existing_jobs = []
+        for folder_name in os.listdir(data_dir):
+            folder_path = os.path.join(data_dir, folder_name)
+            if os.path.isdir(folder_path) and folder_name.startswith("Job"):
+                try:
+                    # Extract job number
+                    job_num = int(folder_name.replace("Job", ""))
+                    existing_jobs.append(job_num)
+                except ValueError:
+                    continue
+        
+        # Determine next job number
+        next_job_number = max(existing_jobs) + 1 if existing_jobs else 1
+        new_job_id = f"Job{next_job_number}"
+        new_job_path = os.path.join(data_dir, new_job_id)
+        
+        # Create job folder
+        os.makedirs(new_job_path, exist_ok=True)
+        
+        # Create jobDescription.txt
+        job_desc_path = os.path.join(new_job_path, "jobDescription.txt")
+        with open(job_desc_path, 'w', encoding='utf-8') as f:
+            f.write(request.job_description)
+        
+        # Create empty applications folder
+        applications_path = os.path.join(new_job_path, "applications")
+        os.makedirs(applications_path, exist_ok=True)
+        
+        return JSONResponse(content={
+            "success": True,
+            "job_id": new_job_id,
+            "message": f"Job created successfully as {new_job_id}"
+        })
+        
+    except Exception as e:
+        return JSONResponse(
+            status_code=500,
+            content={
+                "success": False,
+                "error": f"Failed to create job: {str(e)}"
+            }
+        )
 
 @app.post("/api/submit-application")
 async def submit_application(applicationData: str = Form(...), resume: UploadFile = File(...)):

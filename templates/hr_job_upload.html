@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Job - TalentHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-professional-blue {
+            background: #D4AF37;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:not(:disabled):hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+            background: #C5A028;
+        }
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        #jobDescriptionTextarea::-webkit-scrollbar {
+            width: 6px;
+        }
+        #jobDescriptionTextarea::-webkit-scrollbar-track {
+            background: #FAF9F6;
+            border-radius: 10px;
+        }
+        #jobDescriptionTextarea::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-black shadow-lg" style="border-bottom: 2px solid #D4AF37;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-professional-blue rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h1 class="text-2xl font-semibold text-golden" style="color: #D4AF37;">Upload New Job</h1>
+                </div>
+                <button 
+                    onclick="window.location.href='/hr-portal'"
+                    class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                >
+                    <span class="flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                        </svg>
+                        Back to Dashboard
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="animate-fade-in">
+            <div class="bg-white rounded-xl shadow-lg border border-gray-300 p-8">
+                <!-- Header Section -->
+                <div class="mb-6">
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-1 h-6 bg-professional-blue rounded-full"></div>
+                        <h2 class="text-xl font-bold text-gray-900">Create New Job Posting</h2>
+                    </div>
+                    <p class="text-sm text-gray-600 ml-4">
+                        Paste the complete job description below and click Post to add it to the system.
+                    </p>
+                </div>
+
+                <!-- Success/Error Message -->
+                <div id="messageContainer" class="hidden mb-4"></div>
+
+                <!-- Job Description Form -->
+                <div class="space-y-4">
+                    <div>
+                        <label for="jobDescriptionTextarea" class="block text-sm font-semibold text-gray-900 mb-2">
+                            Job Description
+                        </label>
+                        <textarea 
+                            id="jobDescriptionTextarea"
+                            rows="20"
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-professional-blue focus:ring-2 focus:ring-yellow-100 focus:outline-none resize-none text-sm text-gray-800 font-mono leading-relaxed transition-all"
+                            placeholder="Paste the complete job description here...&#10;&#10;Example:&#10;Position: Senior Software Engineer&#10;Department: Engineering&#10;Location: Remote&#10;&#10;Job Description:&#10;We are looking for an experienced software engineer..."
+                        ></textarea>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-xs text-gray-500">
+                                <span id="charCount">0</span> characters
+                            </span>
+                            <span class="text-xs text-gray-500" id="jobIdPreview"></span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex gap-3 pt-2">
+                        <button 
+                            id="postJobBtn"
+                            onclick="postJob()"
+                            class="btn-primary flex-1 px-6 py-3 bg-professional-blue text-black text-sm font-semibold rounded-lg hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            <span class="flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span id="postBtnText">Post Job</span>
+                            </span>
+                        </button>
+                        <button 
+                            onclick="window.location.href='/hr-portal'"
+                            class="px-6 py-3 bg-gray-100 text-gray-700 text-sm font-semibold rounded-lg hover:bg-gray-200 transition-all"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const textarea = document.getElementById('jobDescriptionTextarea');
+        const charCount = document.getElementById('charCount');
+        const postBtn = document.getElementById('postJobBtn');
+        const postBtnText = document.getElementById('postBtnText');
+        const messageContainer = document.getElementById('messageContainer');
+        const jobIdPreview = document.getElementById('jobIdPreview');
+
+        // Update character count
+        textarea.addEventListener('input', function() {
+            charCount.textContent = this.value.length;
+            postBtn.disabled = this.value.trim().length === 0;
+        });
+
+        // Fetch next job ID on page load
+        async function fetchNextJobId() {
+            try {
+                const response = await fetch('/api/jobs');
+                const data = await response.json();
+                const nextJobNumber = data.count + 1;
+                jobIdPreview.textContent = `Will be created as: Job${nextJobNumber}`;
+            } catch (error) {
+                console.error('Error fetching job count:', error);
+            }
+        }
+
+        fetchNextJobId();
+
+        function showMessage(message, isSuccess) {
+            messageContainer.className = isSuccess 
+                ? 'p-4 rounded-lg bg-green-50 border border-green-200 text-green-800 text-sm'
+                : 'p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 text-sm';
+            messageContainer.innerHTML = `
+                <div class="flex items-start gap-2">
+                    <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        ${isSuccess 
+                            ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>'
+                            : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>'
+                        }
+                    </svg>
+                    <span>${message}</span>
+                </div>
+            `;
+            messageContainer.classList.remove('hidden');
+            
+            if (isSuccess) {
+                setTimeout(() => {
+                    window.location.href = '/hr-portal';
+                }, 2000);
+            }
+        }
+
+        async function postJob() {
+            const jobDescription = textarea.value.trim();
+            
+            if (!jobDescription) {
+                showMessage('Please enter a job description.', false);
+                return;
+            }
+
+            // Disable button and show loading state
+            postBtn.disabled = true;
+            postBtnText.textContent = 'Posting...';
+
+            try {
+                const response = await fetch('/api/create-job', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        job_description: jobDescription
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    showMessage(`Job posted successfully as ${data.job_id}! Redirecting...`, true);
+                    textarea.value = '';
+                    charCount.textContent = '0';
+                } else {
+                    showMessage(data.error || 'Failed to post job. Please try again.', false);
+                    postBtn.disabled = false;
+                    postBtnText.textContent = 'Post Job';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('An error occurred while posting the job. Please try again.', false);
+                postBtn.disabled = false;
+                postBtnText.textContent = 'Post Job';
+            }
+        }
+
+        // Enable Enter key to submit (Ctrl+Enter)
+        textarea.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                postJob();
+            }
+        });
+
+        // Initial state
+        postBtn.disabled = true;
+    </script>
+</body>
+</html>
