@@ -5,6 +5,8 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import os
 import json
+from datetime import datetime
+import shutil
 
 # Import AI Agents
 from src.llm_provider import GeminiProvider
@@ -95,6 +97,131 @@ async def get_jobs():
         return JSONResponse(content={"jobs": jobs, "count": len(jobs)})
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": str(e)})
+
+@app.post("/api/submit-application")
+async def submit_application(applicationData: str = Form(...), resume: UploadFile = File(...)):
+    """
+    Submit a new candidate application with resume.
+    Creates folder structure: data/JobX/applications/FirstName_LastName/
+    Saves generalInformation.json and resume.pdf following candidateInterface.js
+    """
+    try:
+        # Parse application data
+        try:
+            application = json.loads(applicationData)
+        except json.JSONDecodeError as e:
+            return JSONResponse(
+                status_code=400,
+                content={"success": False, "error": f"Invalid JSON data: {str(e)}"}
+            )
+        
+        # Extract jobId
+        job_id = application.get('jobId')
+        if not job_id:
+            return JSONResponse(
+                status_code=400,
+                content={"success": False, "error": "jobId is required"}
+            )
+        
+        # Validate job exists
+        job_path = os.path.join("data", job_id)
+        if not os.path.exists(job_path):
+            return JSONResponse(
+                status_code=404,
+                content={"success": False, "error": f"Job '{job_id}' not found"}
+            )
+        
+        # Validate resume file
+        if not resume.filename.endswith('.pdf'):
+            return JSONResponse(
+                status_code=400,
+                content={"success": False, "error": "Resume must be a PDF file"}
+            )
+        
+        # Extract candidate name
+        first_name = application.get('personalInfo', {}).get('firstName', '')
+        last_name = application.get('personalInfo', {}).get('lastName', '')
+        
+        if not first_name or not last_name:
+            return JSONResponse(
+                status_code=400,
+                content={"success": False, "error": "First name and last name are required"}
+            )
+        
+        # Create candidate folder name: FirstName_LastName
+        candidate_folder_name = f"{first_name}_{last_name}".replace(" ", "_")
+        
+        # Create applications directory if not exists
+        applications_dir = os.path.join(job_path, "applications")
+        os.makedirs(applications_dir, exist_ok=True)
+        
+        # Create candidate directory
+        candidate_dir = os.path.join(applications_dir, candidate_folder_name)
+        
+        # Handle duplicate names by adding timestamp
+        if os.path.exists(candidate_dir):
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            candidate_folder_name = f"{first_name}_{last_name}_{timestamp}".replace(" ", "_")
+            candidate_dir = os.path.join(applications_dir, candidate_folder_name)
+        
+        os.makedirs(candidate_dir, exist_ok=True)
+        
+        # Save resume.pdf
+        resume_path = os.path.join(candidate_dir, "resume.pdf")
+        with open(resume_path, "wb") as buffer:
+            shutil.copyfileobj(resume.file, buffer)
+        
+        # Remove jobId from data before saving (not part of interface)
+        application_to_save = {k: v for k, v in application.items() if k != 'jobId'}
+        
+        # Validate and ensure data follows candidateInterface.js structure
+        required_fields = ['personalInfo', 'education', 'experience', 'skills', 'targetRole', 
+                          'applicationDate', 'status', 'yearsOfExperience']
+        
+        for field in required_fields:
+            if field not in application_to_save:
+                return JSONResponse(
+                    status_code=400,
+                    content={"success": False, "error": f"Missing required field: {field}"}
+                )
+        
+        # Ensure skills has correct structure
+        if 'skills' in application_to_save:
+            skills = application_to_save['skills']
+            required_skill_fields = ['programming', 'frameworks', 'tools', 'cloud', 'databases', 'testing']
+            for skill_field in required_skill_fields:
+                if skill_field not in skills:
+                    skills[skill_field] = []
+        
+        # Save generalInformation.json
+        json_file_path = os.path.join(candidate_dir, "generalInformation.json")
+        with open(json_file_path, 'w', encoding='utf-8') as f:
+            json.dump(application_to_save, f, indent=2, ensure_ascii=False)
+        
+        print(f"✅ Application saved: {candidate_folder_name} for {job_id}")
+        print(f"   📁 Folder: {candidate_dir}")
+        print(f"   📄 Resume: resume.pdf")
+        print(f"   📄 Data: generalInformation.json")
+        
+        return JSONResponse(content={
+            "success": True,
+            "message": "Application submitted successfully",
+            "candidateId": candidate_folder_name,
+            "jobId": job_id
+        })
+        
+    except Exception as e:
+        print(f"❌ Error submitting application: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        return JSONResponse(
+            status_code=500,
+            content={
+                "success": False,
+                "error": "Failed to submit application",
+                "details": str(e)
+            }
+        )
 
 @app.get("/api/candidates/{job_id}")
 async def get_candidates(job_id: str):

@@ -287,6 +287,19 @@
                     </div>
                 </div>
 
+                <!-- Resume Upload -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-black mb-6 flex items-center">
+                        <span class="w-8 h-8 bg-golden text-black rounded-full flex items-center justify-center mr-3 text-sm">7</span>
+                        Resume/CV
+                    </h2>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Upload Resume (PDF) *</label>
+                        <input type="file" name="resume" id="resumeFile" accept=".pdf" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-sm focus-golden file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-golden file:text-black hover:file:bg-yellow-600">
+                        <p class="text-xs text-gray-500 mt-1">PDF format only, max 10MB</p>
+                    </div>
+                </div>
+
                 <!-- Submit Button -->
                 <div class="flex justify-center pt-8 border-t-2 border-golden">
                     <button type="submit" class="px-12 py-4 bg-golden text-black text-lg font-bold rounded-sm hover-golden transition-all duration-300 transform hover:scale-105 shadow-lg">
@@ -413,13 +426,191 @@
         // Load jobs when page loads
         document.addEventListener('DOMContentLoaded', loadJobs);
 
-        // Form submission handler (placeholder)
-        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+        // Form submission handler
+        document.getElementById('applicationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            alert('Form functionality will be implemented later. All data is captured!');
+            
+            const form = e.target;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+            
+            // Disable submit button and show loading state
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span class="animate-pulse">Submitting Application...</span>';
+            
+            try {
+                // Get form data
+                const formData = new FormData(form);
+                
+                // Get selected job
+                const jobId = document.getElementById('jobSelection').value;
+                if (!jobId) {
+                    throw new Error('Please select a job position');
+                }
+                
+                // Validate resume file
+                const resumeFile = document.getElementById('resumeFile').files[0];
+                if (!resumeFile) {
+                    throw new Error('Please upload your resume (PDF format)');
+                }
+                if (resumeFile.type !== 'application/pdf') {
+                    throw new Error('Resume must be in PDF format');
+                }
+                if (resumeFile.size > 10 * 1024 * 1024) {
+                    throw new Error('Resume file size must be less than 10MB');
+                }
+                
+                // Build application data following candidateInterface.js
+                const applicationData = {
+                    jobId: jobId,
+                    personalInfo: {
+                        firstName: formData.get('firstName'),
+                        lastName: formData.get('lastName'),
+                        email: formData.get('email'),
+                        phone: formData.get('phone'),
+                        location: {
+                            city: formData.get('city'),
+                            state: formData.get('state'),
+                            country: formData.get('country')
+                        },
+                        dateOfBirth: formData.get('dateOfBirth'),
+                        linkedin: formData.get('linkedin') || '',
+                        github: formData.get('github') || '',
+                        portfolio: formData.get('portfolio') || ''
+                    },
+                    education: [],
+                    experience: [],
+                    skills: {
+                        programming: [],
+                        frameworks: [],
+                        tools: [],
+                        cloud: [],
+                        databases: [],
+                        testing: []
+                    },
+                    certifications: [],
+                    projects: [],
+                    targetRole: formData.get('targetRole'),
+                    yearsOfExperience: parseFloat(formData.get('yearsOfExperience')),
+                    applicationDate: new Date().toISOString().split('T')[0],
+                    status: 'pending'
+                };
+                
+                // Process education entries
+                const degrees = formData.getAll('degree[]');
+                const fields = formData.getAll('field[]');
+                const institutions = formData.getAll('institution[]');
+                const eduStartDates = formData.getAll('eduStartDate[]');
+                const eduEndDates = formData.getAll('eduEndDate[]');
+                const gpas = formData.getAll('gpa[]');
+                const honorsArray = formData.getAll('honors[]');
+                
+                for (let i = 0; i < degrees.length; i++) {
+                    if (degrees[i] && fields[i] && institutions[i]) {
+                        applicationData.education.push({
+                            degree: degrees[i],
+                            field: fields[i],
+                            institution: institutions[i],
+                            startDate: eduStartDates[i],
+                            endDate: eduEndDates[i],
+                            gpa: gpas[i] ? parseFloat(gpas[i]) : null,
+                            honors: honorsArray[i] ? honorsArray[i].split(',').map(h => h.trim()).filter(h => h) : []
+                        });
+                    }
+                }
+                
+                // Process experience entries
+                const jobTitles = formData.getAll('jobTitle[]');
+                const companies = formData.getAll('company[]');
+                const expStartDates = formData.getAll('expStartDate[]');
+                const expEndDates = formData.getAll('expEndDate[]');
+                const jobDescriptions = formData.getAll('jobDescription[]');
+                
+                for (let i = 0; i < jobTitles.length; i++) {
+                    if (jobTitles[i] && companies[i] && jobDescriptions[i]) {
+                        applicationData.experience.push({
+                            title: jobTitles[i],
+                            company: companies[i],
+                            startDate: expStartDates[i],
+                            endDate: expEndDates[i] || null,
+                            description: jobDescriptions[i]
+                        });
+                    }
+                }
+                
+                // Process skills
+                const technicalSkills = formData.get('technicalSkills');
+                if (technicalSkills) {
+                    const skillsList = technicalSkills.split(',').map(s => s.trim()).filter(s => s);
+                    const midpoint = Math.ceil(skillsList.length / 2);
+                    applicationData.skills.programming = skillsList.slice(0, midpoint);
+                    applicationData.skills.frameworks = skillsList.slice(midpoint);
+                }
+                
+                const tools = formData.get('tools');
+                if (tools) {
+                    applicationData.skills.tools = tools.split(',').map(s => s.trim()).filter(s => s);
+                }
+                
+                // Process certifications
+                const certificationsText = formData.get('certifications');
+                if (certificationsText) {
+                    applicationData.certifications = certificationsText
+                        .split(/[,\n]/)
+                        .map(c => c.trim())
+                        .filter(c => c);
+                }
+                
+                // Process projects
+                const projectDescriptions = formData.getAll('projects[]');
+                applicationData.projects = projectDescriptions.filter(p => p && p.trim());
+                
+                // Validate required fields
+                if (applicationData.education.length === 0) {
+                    throw new Error('At least one education entry is required');
+                }
+                if (applicationData.experience.length === 0) {
+                    throw new Error('At least one work experience entry is required');
+                }
+                
+                // Create FormData for multipart upload
+                const submitFormData = new FormData();
+                submitFormData.append('applicationData', JSON.stringify(applicationData));
+                submitFormData.append('resume', resumeFile);
+                
+                // Submit to API
+                const response = await fetch('/api/submit-application', {
+                    method: 'POST',
+                    body: submitFormData
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok && result.success) {
+                    // Success!
+                    alert(`✅ Application submitted successfully!\n\nYour application for ${jobId} has been received.\nCandidate ID: ${result.candidateId}\n\nThank you for applying!`);
+                    
+                    // Reset form
+                    form.reset();
+                    document.getElementById('jobSelection').value = '';
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    throw new Error(result.error || 'Failed to submit application');
+                }
+                
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert(`❌ Error: ${error.message}\n\nPlease check all required fields and try again.`);
+            } finally {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            }
         });
       
-    </script
+    </script>
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

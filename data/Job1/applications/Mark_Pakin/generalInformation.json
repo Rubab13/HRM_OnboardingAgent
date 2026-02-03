@@ -1,0 +1,59 @@
+{
+  "personalInfo": {
+    "firstName": "Mark",
+    "lastName": "Pakin",
+    "email": "mark.pakin@gmail.com",
+    "phone": "(555) 123 4567",
+    "location": {
+      "city": "New York",
+      "state": "NY",
+      "country": "USA"
+    },
+    "dateOfBirth": "2002-12-12",
+    "linkedin": "",
+    "github": "",
+    "portfolio": ""
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Science",
+      "field": "Computer Science",
+      "institution": "University of Technology",
+      "startDate": "2022-03",
+      "endDate": "2026-02",
+      "gpa": 3.75,
+      "honors": []
+    }
+  ],
+  "experience": [
+    {
+      "title": "Software Developer",
+      "company": "Tech Corp",
+      "startDate": "2024-03",
+      "endDate": "2026-03",
+      "description": "DUmmy responsibilities"
+    }
+  ],
+  "skills": {
+    "programming": [
+      "Python"
+    ],
+    "frameworks": [],
+    "tools": [
+      "Git"
+    ],
+    "cloud": [],
+    "databases": [],
+    "testing": []
+  },
+  "certifications": [
+    "AWS Certified"
+  ],
+  "projects": [
+    "Dummy project description"
+  ],
+  "targetRole": "Software Engineer",
+  "yearsOfExperience": 2,
+  "applicationDate": "2026-02-03",
+  "status": "pending"
+}
