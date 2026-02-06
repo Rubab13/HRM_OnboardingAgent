@@ -7,10 +7,19 @@ import os
 import json
 from datetime import datetime
 import shutil
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 # Import AI Agents
 from src.llm_provider import GeminiProvider
 from src.agents import IntakeAgent, ResumeScreenerAgent, EvaluatorAgent
+
+# Email Configuration - Load from environment variables
+SMTP_SERVER = "smtp.gmail.com"
+SMTP_PORT = 587
+SMTP_EMAIL = os.getenv("SMTP_EMAIL")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 
 app = FastAPI()
 
@@ -19,6 +28,17 @@ llm_provider = None
 intake_agent = None
 screener_agent = None
 evaluator_agent = None
+
+def check_email_configuration():
+    """Check if email configuration is properly set"""
+    if not SMTP_EMAIL or not SMTP_PASSWORD:
+        print("⚠️  Warning: Email credentials not configured!")
+        print("💡 Set SMTP_EMAIL and SMTP_PASSWORD environment variables to enable email sending")
+        print("   Example: $env:SMTP_EMAIL='your-email@gmail.com'")
+        print("           $env:SMTP_PASSWORD='your-app-password'")
+        return False
+    print("✅ Email configuration loaded successfully")
+    return True
 
 def initialize_agents():
     """Initialize AI agents with Gemini API"""
@@ -36,6 +56,46 @@ def initialize_agents():
 
 # Try to initialize agents on startup
 initialize_agents()
+check_email_configuration()
+
+def send_email(subject: str, body: str, receiver: str) -> bool:
+    """
+    Send email using Gmail SMTP service
+    
+    Args:
+        subject: Email subject
+        body: Email body content
+        receiver: Recipient email address
+    
+    Returns:
+        bool: True if email sent successfully, False otherwise
+    """
+    # Check if email credentials are configured
+    if not SMTP_EMAIL or not SMTP_PASSWORD:
+        print("❌ Email credentials not configured. Cannot send email.")
+        return False
+    
+    try:
+        # Create message
+        msg = MIMEMultipart()
+        msg['From'] = SMTP_EMAIL
+        msg['To'] = receiver
+        msg['Subject'] = subject
+        
+        # Attach body
+        msg.attach(MIMEText(body, 'plain'))
+        
+        # Connect to server and send
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+        server.starttls()
+        server.login(SMTP_EMAIL, SMTP_PASSWORD)
+        server.send_message(msg)
+        server.quit()
+        
+        return True
+    except Exception as e:
+        print(f"Error sending email to {receiver}: {str(e)}")
+        return False
 
 # Request model for shortlisting
 class ShortlistRequest(BaseModel):
@@ -464,7 +524,7 @@ async def send_bulk_email(request: BulkEmailRequest):
                 }
             )
         
-        # Mock email sending (in production, use actual email service)
+        # Real email sending using Gmail SMTP
         print(f"\n📧 Sending emails to {len(recipients)} candidates...")
         print(f"Subject: {subject}")
         print(f"Body preview: {body[:100]}...")
@@ -480,13 +540,15 @@ async def send_bulk_email(request: BulkEmailRequest):
                 # Personalize the email body by replacing placeholder if exists
                 personalized_body = body.replace('[Candidate Name]', name)
                 
-                # Mock sending (log to console)
+                # Send actual email
                 print(f"  ✉️  Sending to: {name} <{email}>")
                 
-                # In production, replace this with actual email sending:
-                # await send_email_via_service(email, subject, personalized_body)
-                
-                sent_count += 1
+                if send_email(subject, personalized_body, email):
+                    sent_count += 1
+                    print(f"  ✅ Successfully sent to {email}")
+                else:
+                    failed_emails.append(email)
+                    print(f"  ❌ Failed to send to {email}")
                 
             except Exception as e:
                 print(f"  ❌ Failed to send to {email}: {str(e)}")
