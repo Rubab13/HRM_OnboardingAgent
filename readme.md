@@ -8,7 +8,6 @@ An intelligent AI-powered Human Resource Management system that automates recrui
 - **📄 Resume Screener Agent** - Intelligently screen resumes against job requirements with detailed match analysis
 - **🔍 Evaluator Agent** - Comprehensive candidate evaluation and scoring based on job fit
 - **📧 Email Integration** - Send automated emails to candidates with customizable templates
-- **🌐 Web Dashboard** - Interactive HR dashboard for managing jobs and applications
 - **📊 Data Management** - Structured JSON-based data storage for jobs and candidate applications
 - **⚡ Real-time Processing** - Fast AI-powered analysis using Google Generative AI
  
@@ -32,7 +31,7 @@ An intelligent AI-powered Human Resource Management system that automates recrui
 ### Step 1: Clone the Repository
  
 ```bash
-git clone https://github.com/yourusername/HRM_OnboardingAgent.git
+git clone https://github.com/Rubab13/HRM_OnboardingAgent.git
 cd HRM_OnboardingAgent
 ```
  
@@ -104,9 +103,8 @@ Open your browser and navigate to:
 #### 2. Process Applications
  
 ```
-1. Upload candidate applications for a job
-2. System screens resumes against job requirements
-3. View screening results and match percentages
+1. System screens resumes against job requirements
+2. View screening results and match percentages
 ```
  
 #### 3. Evaluate Candidates
@@ -274,32 +272,7 @@ python app.py --port 8001
 | POST | `/api/upload_job` | Upload job description |
 | POST | `/api/process_application` | Screen resume |
 | POST | `/api/send_email` | Send email to candidate |
- 
-## 🤝 Contributing
- 
-Contributions are welcome! Please follow these steps:
- 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
- 
-## 📝 License
- 
-This project is licensed under the MIT License - see the LICENSE file for details.
- 
-## 📧 Contact Information
- 
-**Project Maintainer**: [Your Name]  
-**Email**: your-email@example.com  
-**GitHub**: [Your GitHub Profile](https://github.com/yourusername)  
-**LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)  
- 
-For issues, feature requests, or questions:
-- 📌 Open an issue on GitHub
-- 💬 Contact via email
-- 🔗 Check project wiki for detailed documentation
+
  
 ## 🙏 Acknowledgments
  
