@@ -52,11 +52,17 @@ class EvaluatorAgent:
                 screening_results=screening_summary
             )
             
-            # Get response from LLM
-            response = self.llm.generate_json_response(prompt)
+            # Get response from LLM with retry logic
+            response = self.llm.generate_json_response(prompt, max_retries=3)
             
             # Extract JSON from response
             evaluation_result = extract_json_from_response(response)
+            
+            # Validate evaluation result
+            is_valid = self._validate_ranking(evaluation_result, valid_results)
+            if not is_valid:
+                print("⚠️  Validation failed, using fallback ranking")
+                return self._fallback_ranking(screening_results, min_score)
             
             # Filter by minimum score and add location/contact info
             shortlisted = []
@@ -92,32 +98,69 @@ class EvaluatorAgent:
             return temp
             
         except Exception as e:
-            # Fallback: Sort by score if AI evaluation fails
-            valid_results = [r for r in screening_results if r.get('match_score', 0) >= min_score]
-            valid_results.sort(key=lambda x: x.get('match_score', 0), reverse=True)
+            print(f"❌ Evaluation error: {str(e)}, using fallback")
+            return self._fallback_ranking(screening_results, min_score)
+    
+    def _validate_ranking(self, result: Dict[str, Any], screening_results: List[Dict[str, Any]]) -> bool:
+        """Validate evaluation result for consistency"""
+        if 'shortlisted_candidates' not in result:
+            print("⚠️  Missing shortlisted_candidates field")
+            return False
+        
+        shortlisted = result['shortlisted_candidates']
+        
+        # Validate each candidate exists in original results
+        for candidate in shortlisted:
+            if 'candidate_name' not in candidate or 'match_score' not in candidate:
+                print("⚠️  Candidate missing required fields")
+                return False
             
-            shortlisted = []
-            for idx, result in enumerate(valid_results[:10], 1):  # Top 10 max
-                shortlisted.append({
-                    'candidate_name': result.get('candidate_name', 'Unknown'),
-                    'match_score': result.get('match_score', 0),
-                    'rank': idx,
-                    'email': result.get('candidate_email', ''),
-                    'phone': result.get('candidate_phone', ''),
-                    'key_strengths': result.get('strengths', [])[:3],
-                    'recommendation_reason': result.get('overall_assessment', 'Candidate meets requirements'),
-                })
+            # Check if score matches original
+            name = candidate['candidate_name']
+            original = next((r for r in screening_results if r.get('candidate_name') == name), None)
+            if not original:
+                print(f"⚠️  Candidate {name} not found in original results")
+                return False
             
-            return {
-                'success': True,
-                'shortlisted_candidates': shortlisted,
-                'summary': {
-                    'total_candidates_reviewed': len(screening_results),
-                    'total_shortlisted': len(shortlisted),
-                    'note': 'Fallback ranking used due to evaluation error'
-                },
-                'error': str(e)
+            if candidate['match_score'] != original.get('match_score'):
+                print(f"⚠️  Score mismatch for {name}")
+                return False
+        
+        # Validate ranking order
+        for i in range(len(shortlisted) - 1):
+            if shortlisted[i]['match_score'] < shortlisted[i + 1]['match_score']:
+                print("⚠️  Ranking order incorrect")
+                return False
+        
+        return True
+    
+    def _fallback_ranking(self, screening_results: List[Dict[str, Any]], min_score: int) -> Dict[str, Any]:
+        """Fallback: Deterministic ranking by score if AI evaluation fails"""
+        print("✅ Using deterministic fallback ranking")
+        valid_results = [r for r in screening_results if r.get('match_score', 0) >= min_score]
+        valid_results.sort(key=lambda x: x.get('match_score', 0), reverse=True)
+        
+        shortlisted = []
+        for idx, result in enumerate(valid_results[:10], 1):  # Top 10 max
+            shortlisted.append({
+                'candidate_name': result.get('candidate_name', 'Unknown'),
+                'match_score': result.get('match_score', 0),
+                'rank': idx,
+                'email': result.get('candidate_email', ''),
+                'phone': result.get('candidate_phone', ''),
+                'key_strengths': result.get('strengths', [])[:3],
+                'recommendation_reason': result.get('overall_assessment', 'Candidate meets requirements'),
+            })
+        
+        return {
+            'success': True,
+            'shortlisted_candidates': shortlisted,
+            'summary': {
+                'total_candidates_reviewed': len(screening_results),
+                'total_shortlisted': len(shortlisted),
+                'note': 'Deterministic ranking used'
             }
+        }
     
     def _format_screening_results(self, screening_results: List[Dict[str, Any]]) -> str:
         """Format screening results for prompt"""

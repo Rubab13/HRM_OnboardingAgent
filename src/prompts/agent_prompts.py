@@ -31,7 +31,7 @@ CRITICAL INSTRUCTIONS TO PREVENT HALLUCINATION:
 """
 
 RESUME_SCREENING_PROMPT = """
-You are an expert resume screener. Evaluate the following candidate against the job requirements.
+You are an expert resume screener. Evaluate the following candidate against the job requirements using a systematic approach.
 
 Job Requirements:
 {job_requirements}
@@ -45,7 +45,34 @@ Skills: {skills}
 Experience: {experience}
 Certifications: {certifications}
 
-Evaluate this candidate on a scale of 0-100 and provide detailed analysis.
+EVALUATION PROCESS - Follow these steps systematically:
+
+STEP 1 - SKILLS ANALYSIS: Compare candidate skills with job requirements
+- List matched skills (skills in BOTH candidate profile AND job requirements)
+- List missing skills (required skills NOT in candidate profile)
+- Calculate match_percentage = (matched count / total required) * 100
+
+STEP 2 - EXPERIENCE EVALUATION: Assess years and relevance
+- Compare candidate years with requirements
+- Determine if qualified (meets/exceeds years required)
+- Score relevance based on job role alignment
+
+STEP 3 - EDUCATION CHECK: Verify education requirements
+- Check if candidate meets minimum education
+- Score education fit for the role
+
+STEP 4 - CALCULATE MATCH SCORE (0-100):
+Formula: (skills_match % × 0.5) + (experience_score × 0.35) + (education_score × 0.15)
+
+STEP 5 - DETERMINE RECOMMENDATION:
+- 85-100: "strong_match"
+- 70-84: "good_match"
+- 50-69: "potential_match"
+- 0-49: "not_recommended"
+
+STEP 6 - IDENTIFY STRENGTHS & WEAKNESSES:
+- List top 3 strengths from actual data
+- List top 2 gaps or missing qualifications
 
 Return your evaluation in JSON format:
 {{
@@ -70,24 +97,19 @@ Return your evaluation in JSON format:
     "recommendation": "strong_match/good_match/potential_match/not_recommended"
 }}
 
-CRITICAL INSTRUCTIONS TO PREVENT HALLUCINATION:
-- Base your evaluation ONLY on the candidate information and job requirements provided above
-- For matched_skills: include ONLY skills that appear in BOTH the candidate's skills AND the job requirements
-- For missing_skills: include ONLY required skills from job requirements that are NOT in the candidate's profile
-- Do NOT assume the candidate has skills that are not explicitly listed in their profile
-- Do NOT invent or assume qualifications, experiences, or skills not present in the provided data
-- Calculate match_percentage as: (number of matched_skills / total required_skills) * 100
-- For experience_match: compare ONLY the years_experience provided with the experience_required from job requirements
-- Set is_qualified to true only if candidate's years meet or exceed the requirement
-- For strengths: list ONLY strengths that are DIRECTLY EVIDENT from the candidate's actual listed skills, experience, and education
-- For weaknesses: list ONLY gaps that are FACTUALLY PRESENT when comparing candidate profile to job requirements
-- For overall_assessment: summarize ONLY based on the factual comparison - do not add opinions or assumptions
-- Use recommendation categories based strictly on match_score: strong_match (85-100), good_match (70-84), potential_match (50-69), not_recommended (0-49)
-- Do NOT use external knowledge about industries, roles, or typical qualifications
+CRITICAL INSTRUCTIONS FOR CONSISTENCY:
+- Base evaluation ONLY on provided data - no assumptions or external knowledge
+- For matched_skills: include ONLY skills in BOTH candidate profile AND job requirements (case-insensitive)
+- For missing_skills: include ONLY required skills NOT in candidate profile
+- Calculate match_percentage exactly: (matched count / required count) * 100
+- Use the exact weighted formula for match_score calculation
+- Apply recommendation thresholds strictly
+- For strengths/weaknesses: cite ONLY factual evidence from provided data
+- Follow the 6-step process in order for consistent results
 """
 
 EVALUATOR_PROMPT = """
-You are an expert hiring manager. Review the screening results and provide final recommendations.
+You are an expert hiring manager. Review the screening results and provide final recommendations using systematic evaluation.
 
 Job Description:
 {job_description}
@@ -95,7 +117,23 @@ Job Description:
 Candidates Screening Results:
 {screening_results}
 
-Analyze all candidates and create a ranked shortlist. Return in JSON format:
+EVALUATION PROCESS - Follow these steps:
+
+STEP 1 - FILTER: Include ONLY candidates with match_score >= 70
+
+STEP 2 - RANK: Sort by match_score in descending order (highest = rank 1)
+
+STEP 3 - ANALYZE EACH CANDIDATE:
+- Extract key_strengths from their screening result
+- Create recommendation_reason from factual screening data
+- Identify interview_focus_areas from weaknesses/missing_skills
+
+STEP 4 - GENERATE SUMMARY:
+- Count total reviewed and shortlisted
+- Extract top_skills_found from matched_skills of shortlisted candidates
+- Assess quality: excellent (avg≥85), good (70-84), fair (50-69), poor (<50)
+
+Return in JSON format:
 {{
     "shortlisted_candidates": [
         {{
@@ -115,21 +153,16 @@ Analyze all candidates and create a ranked shortlist. Return in JSON format:
     }}
 }}
 
-Only include candidates with match_score >= 70. Rank them by match_score in descending order.
-
-CRITICAL INSTRUCTIONS TO PREVENT HALLUCINATION:
-- Use ONLY the information from the screening results provided above
-- For candidate_name and match_score: extract the EXACT values from the screening results
-- For rank: assign based strictly on match_score in descending order (highest score = rank 1)
-- For key_strengths: use ONLY the strengths that are EXPLICITLY LISTED in that candidate's screening result
-- Do NOT add strengths that are not in the screening results, even if they seem logical
-- For recommendation_reason: base it ONLY on the factual data from the screening result (match_score, matched skills, strengths listed)
-- For interview_focus_areas: derive ONLY from the weaknesses or missing_skills in the screening results for that candidate
-- Do NOT invent interview topics that are not grounded in the actual screening data
-- For total_candidates_reviewed: count the EXACT number of candidates in the screening results
+CRITICAL INSTRUCTIONS FOR CONSISTENCY:
+- Use ONLY information from screening results - no external knowledge
+- For candidate_name and match_score: use EXACT values from screening results
+- For rank: assign strictly by match_score descending (highest = 1)
+- For key_strengths: extract ONLY from "strengths" field in screening result
+- For recommendation_reason: base on factual screening data only
+- For interview_focus_areas: derive from "weaknesses"/"missing_skills" in screening result
+- For total_candidates_reviewed: count EXACT number in screening results
 - For total_shortlisted: count ONLY candidates with match_score >= 70
-- For top_skills_found: list ONLY skills that actually appear in the matched_skills of the shortlisted candidates
-- For overall_candidate_quality: base assessment strictly on the match_score distribution: excellent (avg >= 85), good (avg 70-84), fair (avg 50-69), poor (avg < 50)
-- Do NOT fabricate, embellish, or assume any information not present in the screening results
-- If a screening result is missing data for a field, acknowledge it rather than making up information
+- For top_skills_found: extract from "matched_skills" of shortlisted candidates only
+- For overall_candidate_quality: calculate average and apply thresholds strictly
+- Follow the 4-step process in order for consistent ranking
 """

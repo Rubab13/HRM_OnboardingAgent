@@ -44,11 +44,14 @@ class ResumeScreenerAgent:
                 certifications=candidate_info['certifications']
             )
             
-            # Get response from LLM
-            response = self.llm.generate_json_response(prompt)
+            # Get response from LLM with retry logic
+            response = self.llm.generate_json_response(prompt, max_retries=3)
             
             # Extract JSON from response
             screening_result = extract_json_from_response(response)
+            
+            # Validate and fix screening result
+            screening_result = self._validate_and_fix_result(screening_result, candidate_info['name'])
             
             # Add candidate basic info to result
             screening_result['candidate_name'] = candidate_info['name']
@@ -101,6 +104,35 @@ class ResumeScreenerAgent:
                 })
         
         return results
+    
+    def _validate_and_fix_result(self, result: Dict[str, Any], candidate_name: str) -> Dict[str, Any]:
+        """Validate screening result and fix common issues"""
+        # Ensure match_score is within valid range
+        if 'match_score' in result:
+            result['match_score'] = max(0, min(100, int(result['match_score'])))
+        
+        # Validate recommendation matches score
+        if 'match_score' in result and 'recommendation' in result:
+            score = result['match_score']
+            expected_rec = (
+                'strong_match' if score >= 85 else
+                'good_match' if score >= 70 else
+                'potential_match' if score >= 50 else
+                'not_recommended'
+            )
+            if result['recommendation'] != expected_rec:
+                print(f"⚠️  Fixed recommendation for {candidate_name}: {result['recommendation']} -> {expected_rec}")
+                result['recommendation'] = expected_rec
+        
+        # Ensure required fields exist with defaults
+        if 'strengths' not in result:
+            result['strengths'] = []
+        if 'weaknesses' not in result:
+            result['weaknesses'] = []
+        if 'overall_assessment' not in result:
+            result['overall_assessment'] = "Candidate evaluation"
+        
+        return result
     
     def _format_job_requirements(self, job_requirements: Dict[str, Any]) -> str:
         """Format job requirements for prompt"""
